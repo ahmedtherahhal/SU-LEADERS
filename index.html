@@ -1,0 +1,1809 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>AI Teacher Hub – قادة مدارس الجمهورية</title>
+  <meta name="description" content="منصة تعليمية ذكية بالذكاء الاصطناعي: حل الواجبات بالصور، محادثة صوتية، جدول دراسي مخصّص، ولوحات تحكم للطلاب والمعلمين وأولياء الأمور والمدارس. مبادرة اتحاد طلاب مدارس القاهرة بالشراكة مع مؤسسة شباب القادة." />
+  <meta name="theme-color" content="#43637E" />
+  <link rel="icon" type="image/png" href="logo-ylf.png" />
+  <link rel="apple-touch-icon" href="logo-ylf.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="AI Teacher Hub" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta property="og:title" content="AI Teacher Hub – مدرّسك الذكي" />
+  <meta property="og:description" content="منصة تعليمية ذكية بالذكاء الاصطناعي لطلاب مصر — شرح، حل واجبات، محادثة صوتية، وجدول دراسي مخصّص." />
+  <meta property="og:image" content="logo-ylf.png" />
+  <meta property="og:type" content="website" />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+  <style>
+/* ═══════════════════════════════════════════════════════════
+   AI TEACHER HUB — Mobile-First · هوية الشركاء (YLF × SU × CSU)
+   Palette: #321E48 #43637E #2A9089 #65DCD5 #A8ECE7
+   ═══════════════════════════════════════════════════════════ */
+:root {
+  /* ── الهوية الجديدة: بنفسجي غامق × كحلي رمادي × تركواز × نعناعي فاتح ── */
+  --ink-d:   #321E48; --ink-m:   #43637E; --ink-l:   #5B92A8;
+  --ink-xl:  #E4ECEF; --ink-g:   rgba(67,99,126,.16);
+  --sand-d:  #2A9089; --sand-m:  #65DCD5; --sand-l:  #A8ECE7;
+  --sand-xl: #D9FFF4; --sand-g:  rgba(101,220,213,.2);
+  --bg:      #FAFFFE; --bg2: #FFFFFF; --bg-card: rgba(255,255,255,.96);
+  --txt-1:   #2A1A3D; --txt-2: #5C5470; --txt-3: #8D86A0; --txt-d: #F3FFFB;
+  --br:      rgba(50,30,72,.12); --br-hi: rgba(50,30,72,.24); --br-g: rgba(50,30,72,.05);
+  --font:    'Cairo', system-ui, sans-serif;
+  --px:      16px; --cp: 18px; --gap: 12px;
+  --r-sm: 10px; --r-md: 14px; --r-lg: 18px; --r-xl: 22px; --r-pill: 999px;
+  --sh:      0 1px 3px rgba(50,30,72,.09), 0 0 0 1px var(--br);
+  --sh-h:    0 12px 28px rgba(50,30,72,.16), 0 0 0 1px var(--br-hi);
+  --sh-teal: 0 3px 10px rgba(50,30,72,.2), 0 1px 3px rgba(50,30,72,.07);
+  --sh-terra:0 3px 10px rgba(101,220,213,.3), 0 1px 3px rgba(50,30,72,.07);
+  --sh-f:    0 0 0 3px rgba(67,99,126,.26);
+  --ease: cubic-bezier(.4,0,.2,1);
+  --spring: cubic-bezier(.34,1.56,.64,1);
+  --t: all .2s var(--ease); --ts: all .25s var(--ease);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font);background:var(--bg);color:var(--txt-1);min-height:100svh;overflow-x:hidden;direction:rtl;line-height:1.65;-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+button,select,textarea{font-family:var(--font)}
+ 
+/* ── Background */
+.bg-base{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse 80% 50% at 20% 0%,rgba(67,99,126,.11) 0%,transparent 55%),
+    radial-gradient(ellipse 60% 40% at 85% 90%,rgba(101,220,213,.07) 0%,transparent 55%),
+    linear-gradient(170deg,#F3FFFB 0%,#FFFFFF 45%,#FAFFFE 100%)}
+.blob{position:fixed;border-radius:50%;filter:blur(70px);pointer-events:none;z-index:0;animation:bf 22s ease-in-out infinite alternate}
+.blob-1{width:clamp(200px,35vw,400px);height:clamp(200px,35vw,400px);background:radial-gradient(circle,rgba(67,99,126,.09),transparent 70%);top:-80px;right:-60px}
+.blob-2{width:clamp(150px,28vw,300px);height:clamp(150px,28vw,300px);background:radial-gradient(circle,rgba(101,220,213,.06),transparent 70%);bottom:10%;left:-50px;animation-delay:-7s;animation-duration:28s}
+.blob-3{width:clamp(100px,18vw,200px);height:clamp(100px,18vw,200px);background:radial-gradient(circle,rgba(50,30,72,.05),transparent 70%);top:40%;right:5%;animation-delay:-4s;animation-duration:24s}
+@keyframes bf{0%{transform:translate(0,0) scale(1)}50%{transform:translate(10px,-14px) scale(1.03)}100%{transform:translate(-6px,8px) scale(1)}}
+.scanlines{display:none}
+ 
+/* ── Cursor */
+.cursor-dot,.cursor-ring{display:none}
+ 
+/* ══════════ HEADER ══════════ */
+.header{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.85);backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);border-bottom:1px solid var(--br);box-shadow:0 2px 16px rgba(16,38,60,.06)}
+.header::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--ink-d),var(--ink-l),var(--sand-l),var(--sand-d));opacity:.8}
+.header-inner{max-width:900px;margin:0 auto;padding:0 var(--px)}
+ 
+/* Logos bar */
+.logos-bar{display:flex;align-items:center;justify-content:space-between;padding:8px 0 7px;border-bottom:1px solid rgba(67,99,126,.07);gap:8px}
+.org-logo-img{display:flex;flex-direction:column;align-items:center;gap:4px;transition:var(--ts)}
+.org-logo-img:hover{transform:translateY(-2px)}
+.org-logo-img img{object-fit:contain;border-radius:9px;transition:var(--t);height:34px;width:auto;padding:4px;box-shadow:var(--sh);border:1px solid var(--br)}
+.su-img img{background:#FFFFFF}
+.csu-img img{background:#FFFFFF}
+.ylf-img img{background:#FFFFFF}
+.logo-label{font-size:.58rem;font-weight:700;color:var(--txt-3);white-space:nowrap;text-align:center;max-width:76px;display:none}
+@media(min-width:640px){.logo-label{display:block}}
+ 
+/* Centre brand */
+.header-brand{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.brand-icon{width:32px;height:32px;background:linear-gradient(135deg,var(--ink-d),var(--ink-m));border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:.95rem;box-shadow:var(--sh-teal);animation:ipulse 3s ease-in-out infinite;flex-shrink:0}
+@keyframes ipulse{0%,100%{box-shadow:var(--sh-teal)}50%{box-shadow:0 0 18px rgba(67,99,126,.5),0 4px 12px rgba(0,0,0,.3)}}
+.brand-text{display:flex;flex-direction:column;align-items:center;line-height:1}
+.brand-main{font-size:.95rem;font-weight:900;background:linear-gradient(135deg,var(--txt-1) 0%,var(--ink-l) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:.3px}
+.brand-sub{font-size:.48rem;font-weight:700;color:var(--sand-l);letter-spacing:.8px;margin-top:2px}
+ 
+/* Nav */
+.header-nav{display:flex;align-items:center;gap:5px;padding:7px 0;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.header-nav::-webkit-scrollbar{display:none}
+.nav-pill{display:inline-flex;align-items:center;gap:5px;padding:8px 13px;border:1.5px solid var(--br);background:rgba(67,99,126,.04);color:var(--txt-3);border-radius:var(--r-pill);font-size:.8rem;font-weight:700;cursor:pointer;transition:var(--t);white-space:nowrap;flex-shrink:0;min-height:38px}
+.nav-pill:hover{color:var(--txt-1);border-color:var(--br-hi);background:rgba(67,99,126,.1)}
+.nav-pill.active{background:linear-gradient(135deg,var(--ink-d),var(--ink-m));border-color:transparent;color:#fff;box-shadow:var(--sh-teal)}
+.pill-icon{font-size:.88rem}
+.simple-toggle{display:inline-flex;align-items:center;gap:5px;margin-right:auto;flex-shrink:0;padding:7px 11px;background:rgba(101,220,213,.08);border:1.5px solid rgba(101,220,213,.3);color:var(--sand-l);border-radius:var(--r-pill);font-size:.78rem;font-weight:700;cursor:pointer;transition:var(--ts);min-height:38px}
+.simple-toggle:hover,.simple-toggle.active{background:rgba(101,220,213,.15);border-color:var(--sand-m);box-shadow:var(--sh-terra);transform:translateY(-1px)}
+
+/* ══════════ AUTH ══════════ */
+.auth-btn{display:inline-flex;align-items:center;gap:5px;flex-shrink:0;padding:7px 12px;background:rgba(67,99,126,.08);border:1.5px solid var(--br);color:var(--txt-2);border-radius:var(--r-pill);font-size:.78rem;font-weight:700;cursor:pointer;transition:var(--ts);min-height:38px}
+.auth-btn:hover{border-color:var(--br-hi);color:var(--txt-1)}
+.auth-btn.hidden{display:none}
+.auth-user-chip{display:inline-flex;align-items:center;gap:7px;flex-shrink:0;padding:6px 6px 6px 12px;background:rgba(67,99,126,.1);border:1.5px solid var(--br-hi);border-radius:var(--r-pill);min-height:38px}
+.auth-user-chip.hidden{display:none}
+.auth-user-name{font-size:.76rem;font-weight:800;color:var(--ink-l);white-space:nowrap;max-width:120px;overflow:hidden;text-overflow:ellipsis}
+.auth-logout-btn{width:26px;height:26px;border-radius:50%;border:none;background:rgba(101,220,213,.15);color:var(--sand-l);cursor:pointer;font-size:.72rem;display:flex;align-items:center;justify-content:center;transition:var(--t)}
+.auth-logout-btn:hover{background:rgba(101,220,213,.3);transform:scale(1.08)}
+
+.auth-overlay{position:fixed;inset:0;background:rgba(10,11,15,.88);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;animation:ovin .25s var(--ease) both}
+.auth-overlay.hidden{display:none}
+.auth-card{position:relative;background:var(--bg2);border:1.5px solid var(--br-hi);border-radius:var(--r-xl);padding:26px 22px 22px;max-width:380px;width:100%;box-shadow:var(--sh-h);animation:cin .35s var(--spring) both}
+.auth-close{position:absolute;top:14px;left:14px;width:30px;height:30px;background:rgba(16,38,60,.05);border:1px solid var(--br);color:var(--txt-3);border-radius:8px;cursor:pointer;font-size:.8rem;transition:var(--t)}
+.auth-close:hover{color:var(--txt-1);border-color:var(--br-hi)}
+.auth-tabs{display:flex;gap:8px;margin-bottom:20px;padding-left:36px}
+.auth-tab{flex:1;padding:10px;background:rgba(67,99,126,.04);border:1.5px solid var(--br);border-radius:var(--r-lg);color:var(--txt-3);font-size:.8rem;font-weight:800;cursor:pointer;transition:var(--t)}
+.auth-tab.active{background:linear-gradient(135deg,var(--ink-d),var(--ink-m));border-color:transparent;color:#fff}
+.auth-form{display:flex;flex-direction:column;gap:12px}
+.auth-form.hidden{display:none}
+.auth-form input.planner-date-input{text-align:right}
+.auth-error{font-size:.78rem;color:#8A2E29;background:rgba(178,58,52,.1);border:1px solid rgba(178,58,52,.35);border-radius:var(--r-md);padding:9px 12px;text-align:center}
+.auth-error.hidden{display:none}
+
+/* ══════════ VOICE CHAT ══════════ */
+.voice-overlay{position:fixed;inset:0;background:rgba(10,11,15,.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);z-index:9999;display:flex;align-items:center;justify-content:center;padding:16px}
+.voice-overlay.hidden{display:none}
+.voice-card{background:var(--bg2);border:1.5px solid var(--br-hi);border-radius:var(--r-xl);width:100%;max-width:420px;height:min(600px,88vh);display:flex;flex-direction:column;box-shadow:var(--sh-h);animation:cin .35s var(--spring) both;overflow:hidden}
+.voice-header{display:flex;align-items:center;gap:8px;padding:14px 14px 12px;border-bottom:1px solid var(--br);flex-shrink:0}
+.voice-header-title{font-size:.9rem;font-weight:900;color:var(--txt-1);flex-shrink:0}
+.voice-lang-toggle{display:flex;gap:4px;margin-right:auto;background:rgba(67,99,126,.06);border-radius:var(--r-pill);padding:3px}
+.voice-lang-btn{padding:5px 10px;border:none;background:transparent;color:var(--txt-3);font-size:.7rem;font-weight:700;border-radius:var(--r-pill);cursor:pointer;transition:var(--t)}
+.voice-lang-btn.active{background:linear-gradient(135deg,var(--ink-d),var(--ink-m));color:#fff}
+.voice-close{width:28px;height:28px;flex-shrink:0;background:rgba(16,38,60,.05);border:1px solid var(--br);color:var(--txt-3);border-radius:8px;cursor:pointer;font-size:.78rem;transition:var(--t)}
+.voice-close:hover{color:var(--txt-1);border-color:var(--br-hi)}
+.voice-messages{flex:1;overflow-y:auto;padding:16px 14px;display:flex;flex-direction:column;gap:10px}
+.voice-empty-hint{text-align:center;color:var(--txt-3);font-size:.85rem;margin:auto}
+.voice-bubble{max-width:82%;padding:10px 14px;border-radius:16px;font-size:.85rem;line-height:1.65;animation:vb-in .3s var(--ease) both}
+@keyframes vb-in{0%{opacity:0;transform:translateY(8px)}100%{opacity:1;transform:translateY(0)}}
+.voice-bubble.user{align-self:flex-start;background:linear-gradient(135deg,var(--ink-d),var(--ink-m));color:#fff;border-bottom-left-radius:5px}
+.voice-bubble.assistant{align-self:flex-end;background:rgba(16,38,60,.05);border:1px solid var(--br);color:var(--txt-1);border-bottom-right-radius:5px}
+.voice-bubble.thinking{align-self:flex-end;background:rgba(16,38,60,.05);border:1px solid var(--br);color:var(--txt-3);font-style:italic}
+.voice-controls{display:flex;align-items:center;justify-content:center;gap:16px;padding:16px 14px 20px;border-top:1px solid var(--br);flex-shrink:0}
+.voice-reset-btn,.voice-status{flex:1;text-align:center}
+.voice-reset-btn{background:none;border:none;color:var(--txt-3);font-size:1.1rem;cursor:pointer;padding:10px;transition:var(--t)}
+.voice-reset-btn:hover{color:var(--txt-1)}
+.voice-status{font-size:.72rem;color:var(--txt-3);font-weight:700}
+.voice-mic-btn{width:64px;height:64px;flex-shrink:0;border-radius:50%;background:linear-gradient(135deg,var(--ink-d),var(--ink-m));border:none;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:var(--ts);box-shadow:var(--sh-teal)}
+.voice-mic-btn svg{width:26px;height:26px}
+.voice-mic-btn:hover{transform:scale(1.05)}
+.voice-mic-btn.listening{background:linear-gradient(135deg,#96322D,#B23A34);animation:mic-pulse-voice 1.6s ease-in-out infinite}
+@keyframes mic-pulse-voice{0%,100%{box-shadow:0 0 0 0 rgba(178,58,52,.45)}50%{box-shadow:0 0 0 12px rgba(178,58,52,0)}}
+.voice-mic-btn.thinking{background:linear-gradient(135deg,#555,#777);cursor:not-allowed;animation:mic-think 1s linear infinite}
+@keyframes mic-think{0%{opacity:.6}50%{opacity:1}100%{opacity:.6}}
+.voice-mic-btn.speaking{background:linear-gradient(135deg,var(--sand-d),var(--sand-m));animation:mic-pulse-voice2 1.2s ease-in-out infinite}
+@keyframes mic-pulse-voice2{0%,100%{box-shadow:0 0 0 0 rgba(101,220,213,.5)}50%{box-shadow:0 0 0 14px rgba(101,220,213,0)}}
+.voice-mic-btn:disabled{opacity:.4;cursor:not-allowed}
+.simple-label{display:none}
+@media(min-width:480px){.simple-label{display:inline}}
+ 
+/* ══════════ MAIN ══════════ */
+.main{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:0 var(--px) 80px}
+.tab-panel{display:none;animation:tin .3s cubic-bezier(.16,1,.3,1) both}
+.tab-panel.active{display:block}
+@keyframes tin{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+ 
+/* ══════════ HERO ══════════ */
+.hero{text-align:center;padding:28px 0 24px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:5px 15px;background:rgba(67,99,126,.1);border:1px solid var(--br-hi);border-radius:var(--r-pill);font-size:.73rem;font-weight:700;color:var(--ink-l);margin-bottom:14px;animation:bin .6s var(--spring) both}
+@keyframes bin{from{opacity:0;transform:translateY(-10px) scale(.9)}to{opacity:1;transform:translateY(0) scale(1)}}
+.badge-dot{width:7px;height:7px;background:var(--ink-m);border-radius:50%;box-shadow:0 0 6px var(--ink-g);animation:bdp 2s ease-in-out infinite}
+@keyframes bdp{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
+.hero-title{font-size:clamp(1.65rem,5vw,2.8rem);font-weight:900;line-height:1.15;color:var(--txt-1);margin-bottom:10px;animation:hin .7s var(--spring) .1s both}
+@keyframes hin{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.gradient-text{background:linear-gradient(135deg,var(--ink-l),var(--ink-m));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-desc{font-size:.88rem;color:var(--txt-2);margin-bottom:20px;animation:hin .7s var(--ease) .2s both}
+.hero-stats{display:flex;align-items:center;justify-content:center;gap:18px;animation:hin .7s var(--ease) .3s both}
+.stat{display:flex;flex-direction:column;align-items:center;gap:1px}
+.stat-num{font-size:1.5rem;font-weight:900;line-height:1;background:linear-gradient(135deg,var(--ink-m),var(--ink-l));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-lbl{font-size:.65rem;color:var(--txt-3);font-weight:600}
+.stat-divider{width:1px;height:28px;background:var(--br)}
+
+/* ══════════ STREAK WIDGET ══════════ */
+.streak-widget{display:flex;align-items:center;gap:12px;background:var(--bg-card);border:1.5px solid var(--br);border-radius:var(--r-xl);padding:14px 16px;margin-bottom:14px;backdrop-filter:blur(16px);box-shadow:var(--sh);transition:var(--ts)}
+.streak-flame{font-size:1.9rem;line-height:1;filter:grayscale(.7) opacity(.6);transition:var(--ts)}
+.streak-widget.active .streak-flame{filter:none;animation:flameflick 1.6s ease-in-out infinite}
+@keyframes flameflick{0%,100%{transform:scale(1) rotate(0deg)}25%{transform:scale(1.08) rotate(-3deg)}50%{transform:scale(1.03) rotate(2deg)}75%{transform:scale(1.1) rotate(-1deg)}}
+.streak-info{flex:1;min-width:0}
+.streak-count{font-size:1.05rem;font-weight:900;color:var(--txt-1)}
+.streak-sub{font-size:.72rem;color:var(--txt-3);font-weight:600;margin-top:1px}
+.streak-today{font-size:.7rem;font-weight:700;color:var(--sand-l);background:rgba(101,220,213,.1);border:1px solid rgba(101,220,213,.3);border-radius:var(--r-pill);padding:5px 10px;white-space:nowrap;flex-shrink:0}
+.streak-widget.active .streak-today{color:var(--ink-l);background:rgba(67,99,126,.12);border-color:var(--br-hi)}
+.streak-widget.milestone{animation:streakcelebrate .6s var(--spring)}
+@keyframes streakcelebrate{0%{transform:scale(1)}30%{transform:scale(1.04)}60%{transform:scale(.99)}100%{transform:scale(1)}}
+@media(max-width:380px){.streak-today{display:none}}
+
+.voice-entry-btn{display:flex;align-items:center;gap:12px;width:100%;background:linear-gradient(135deg,rgba(67,99,126,.1),rgba(101,220,213,.08));border:1.5px solid var(--br-hi);border-radius:var(--r-xl);padding:14px 16px;margin-bottom:14px;cursor:pointer;transition:var(--ts);text-align:right}
+.voice-entry-btn:hover{transform:translateY(-2px);box-shadow:var(--sh-teal)}
+.voice-entry-icon{font-size:1.6rem;flex-shrink:0}
+.voice-entry-text{flex:1;display:flex;flex-direction:column;gap:2px;min-width:0}
+.voice-entry-title{font-size:.92rem;font-weight:900;color:var(--txt-1)}
+.voice-entry-sub{font-size:.72rem;color:var(--txt-3);font-weight:600}
+.voice-entry-arrow{font-size:1.3rem;color:var(--ink-l);flex-shrink:0}
+
+/* ══════════ CARDS ══════════ */
+.card{background:var(--bg-card);border:1px solid var(--br);border-radius:var(--r-xl);padding:var(--cp);margin-bottom:14px;position:relative;overflow:hidden;transition:var(--t);box-shadow:var(--sh);backdrop-filter:blur(16px);animation:cin .5s var(--spring) both}
+.card:hover{box-shadow:var(--sh-h);border-color:var(--br-hi)}
+@keyframes cin{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.lesson-card{animation-delay:.06s}.question-card{animation-delay:.12s}.response-card{animation-delay:.18s}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--ink-d),var(--ink-m),var(--sand-l));opacity:0;transition:opacity .25s;border-radius:var(--r-xl) var(--r-xl) 0 0}
+.card:hover{border-color:var(--br-hi);transform:translateY(-2px);box-shadow:var(--sh-h)}
+.card:hover::before{opacity:1}
+.card-header{display:flex;align-items:center;gap:10px;margin-bottom:15px}
+.card-icon-badge{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.card-icon-badge.teal{background:rgba(67,99,126,.14);border:1px solid rgba(67,99,126,.24)}
+.card-icon-badge.terra{background:rgba(101,220,213,.14);border:1px solid rgba(101,220,213,.24)}
+.card-label{font-size:.9rem;font-weight:700;color:var(--txt-1)}
+.card-label em{font-style:normal;font-weight:500;color:var(--txt-3);font-size:.8rem}
+ 
+/* ══════════ SELECTORS ══════════ */
+.selectors{display:grid;grid-template-columns:1fr;gap:10px}
+@media(min-width:480px){.selectors{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:680px){.selectors{grid-template-columns:repeat(3,1fr)}}
+.select-wrap{position:relative}
+.selector{width:100%;padding:12px 36px 12px 14px;background:rgba(67,99,126,.05);border:1.5px solid var(--br);border-radius:var(--r-md);color:var(--txt-1);font-size:.87rem;font-weight:500;cursor:pointer;appearance:none;-webkit-appearance:none;outline:none;transition:var(--t);min-height:46px}
+.selector:focus,.selector:hover{border-color:var(--br-hi);background:rgba(67,99,126,.1);box-shadow:var(--sh-f)}
+.selector option{background:#FFFFFF;color:var(--txt-1)}
+.select-arrow{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--txt-3);pointer-events:none;font-size:.75rem}
+.lesson-preview{margin-top:12px;padding:12px 14px;background:rgba(67,99,126,.07);border:1px solid var(--br-hi);border-right:3px solid var(--ink-m);border-radius:var(--r-md);font-size:.83rem;line-height:1.7;color:var(--txt-2);animation:cin .25s var(--ease) both}
+.lesson-preview strong{display:block;margin-bottom:5px;color:var(--ink-l);font-size:.87rem}
+ 
+/* ══════════ TEXTAREA ══════════ */
+.textarea-wrap{position:relative}
+.question-input{width:100%;padding:14px 50px 14px 16px;background:rgba(67,99,126,.05);border:1.5px solid var(--br);border-radius:var(--r-lg);color:var(--txt-1);font-size:.94rem;line-height:1.7;resize:none;outline:none;transition:var(--t);text-align:right;min-height:110px}
+.question-input::placeholder{color:var(--txt-3)}
+.question-input:focus{border-color:var(--ink-m);background:rgba(67,99,126,.08);box-shadow:var(--sh-f)}
+.voice-btn{position:absolute;left:12px;bottom:12px;width:36px;height:36px;background:rgba(67,99,126,.1);border:1.5px solid var(--br);border-radius:10px;color:var(--txt-3);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:var(--ts);padding:0}
+.voice-btn svg{width:16px;height:16px}
+.voice-btn:hover{color:var(--ink-l);border-color:var(--ink-m);background:rgba(67,99,126,.18);box-shadow:var(--sh-teal);transform:scale(1.08)}
+.voice-btn.recording{color:var(--sand-l);border-color:var(--sand-m);background:rgba(101,220,213,.14);animation:recpulse 1s ease-in-out infinite}
+@keyframes recpulse{0%,100%{box-shadow:0 0 0 0 rgba(101,220,213,.4)}50%{box-shadow:0 0 0 8px rgba(101,220,213,0)}}
+.char-count{text-align:left;font-size:.71rem;color:var(--txt-3);margin-top:5px;padding-left:4px}
+.char-count.warn{color:var(--sand-l)}
+
+/* ══════════ IMAGE ATTACH / PREVIEW / SCORE CHIP ══════════ */
+.image-attach-prompt{position:relative;display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:10px;padding:12px 14px;background:rgba(67,99,126,.05);border:1.5px dashed var(--br-hi);border-radius:var(--r-lg);color:var(--txt-2);cursor:pointer;font-size:.83rem;font-weight:700;transition:var(--t)}
+.image-attach-prompt .iap-icon{font-size:1.05rem}
+.image-attach-prompt:hover{border-color:var(--ink-m);background:rgba(67,99,126,.1);color:var(--txt-1);transform:translateY(-1px)}
+.image-attach-prompt.hidden{display:none}
+.image-preview{position:relative;display:flex;align-items:center;gap:10px;margin-top:10px;padding:8px 10px;background:rgba(67,99,126,.06);border:1px solid var(--br);border-radius:var(--r-lg)}
+.image-preview img{width:44px;height:44px;object-fit:cover;border-radius:8px;border:1px solid var(--br);flex-shrink:0}
+.image-preview-info{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+.image-preview-label{font-size:.8rem;font-weight:700;color:var(--txt-1)}
+.image-preview-hint{font-size:.7rem;color:var(--txt-3)}
+.image-remove-btn{width:26px;height:26px;flex-shrink:0;border-radius:50%;border:1px solid var(--br);background:rgba(101,220,213,.1);color:var(--sand-l);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.78rem;transition:var(--t)}
+.image-remove-btn:hover{background:rgba(101,220,213,.2);transform:scale(1.08)}
+.score-chip{display:flex;align-items:center;gap:12px;padding:12px 16px;margin-bottom:14px;border-radius:var(--r-lg);border:1px solid}
+.score-chip-num{font-size:1.4rem;font-weight:900;line-height:1}
+.score-chip-label{font-size:.8rem;font-weight:700}
+.score-chip.score-good{background:rgba(67,99,126,.1);border-color:var(--br-hi);color:var(--ink-l)}
+.score-chip.score-mid{background:rgba(101,220,213,.1);border-color:rgba(101,220,213,.4);color:var(--sand-l)}
+.score-chip.score-low{background:rgba(178,58,52,.1);border-color:rgba(178,58,52,.4);color:#8A2E29}
+
+/* ══════════ ACTION BUTTONS ══════════ */
+.action-buttons{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px}
+.action-btn{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:13px 8px;border:1.5px solid var(--br);border-radius:var(--r-lg);background:rgba(67,99,126,.04);color:var(--txt-1);cursor:pointer;overflow:hidden;transition:var(--ts);text-align:center;min-height:78px}
+.btn-glow{position:absolute;inset:0;opacity:0;transition:opacity .25s;border-radius:inherit;pointer-events:none}
+.btn-explain .btn-glow{background:radial-gradient(ellipse at 50% 0%,rgba(67,99,126,.18),transparent 70%)}
+.btn-summarize .btn-glow{background:radial-gradient(ellipse at 50% 0%,rgba(101,220,213,.16),transparent 70%)}
+.btn-questions .btn-glow{background:radial-gradient(ellipse at 50% 0%,rgba(42,144,137,.18),transparent 70%)}
+.btn-homework .btn-glow{background:radial-gradient(ellipse at 50% 0%,rgba(47,125,82,.2),transparent 70%)}
+.btn-quiz .btn-glow{background:radial-gradient(ellipse at 50% 0%,rgba(67,99,126,.2),transparent 70%)}
+.action-buttons .btn-quiz{grid-column:1/-1}
+.action-btn:hover .btn-glow{opacity:1}
+.btn-icon-wrap{width:36px;height:36px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;transition:var(--ts);position:relative;z-index:1}
+.btn-explain .btn-icon-wrap{background:rgba(67,99,126,.14);border:1px solid rgba(67,99,126,.24)}
+.btn-summarize .btn-icon-wrap{background:rgba(101,220,213,.14);border:1px solid rgba(101,220,213,.24)}
+.btn-questions .btn-icon-wrap{background:rgba(42,144,137,.14);border:1px solid rgba(42,144,137,.28)}
+.btn-homework .btn-icon-wrap{background:rgba(47,125,82,.16);border:1px solid rgba(47,125,82,.3)}
+.btn-quiz .btn-icon-wrap{background:rgba(67,99,126,.16);border:1px solid rgba(67,99,126,.3)}
+.action-btn:hover .btn-icon-wrap{transform:scale(1.12) translateY(-2px)}
+.btn-text{font-size:.8rem;font-weight:800;color:var(--txt-1);z-index:1;position:relative}
+.btn-hint{font-size:.63rem;color:var(--txt-3);z-index:1;position:relative}
+.btn-explain:hover{border-color:var(--ink-m);box-shadow:var(--sh-teal);transform:translateY(-3px)}
+.btn-summarize:hover{border-color:var(--sand-m);box-shadow:var(--sh-terra);transform:translateY(-3px)}
+.btn-questions:hover{border-color:var(--sand-d);box-shadow:0 4px 16px rgba(42,144,137,.3);transform:translateY(-3px)}
+.btn-homework:hover{border-color:#2F7D52;box-shadow:0 4px 16px rgba(47,125,82,.3);transform:translateY(-3px)}
+.btn-quiz:hover{border-color:#43637E;box-shadow:0 4px 16px rgba(67,99,126,.3);transform:translateY(-3px)}
+.btn-explain.active-btn{background:rgba(67,99,126,.18);border-color:var(--ink-m);box-shadow:var(--sh-teal)}
+.btn-summarize.active-btn{background:rgba(101,220,213,.18);border-color:var(--sand-m);box-shadow:var(--sh-terra)}
+.btn-questions.active-btn{background:rgba(42,144,137,.18);border-color:var(--sand-d);box-shadow:0 4px 16px rgba(42,144,137,.3)}
+.btn-homework.active-btn{background:rgba(47,125,82,.2);border-color:#2F7D52;box-shadow:0 4px 16px rgba(47,125,82,.3)}
+.btn-quiz.active-btn{background:rgba(67,99,126,.22);border-color:#43637E;box-shadow:0 4px 16px rgba(67,99,126,.3)}
+
+/* ══════════ STUDY PLANNER ══════════ */
+.planner-field{margin-bottom:18px}
+.planner-field:last-of-type{margin-bottom:0}
+.planner-label{display:block;font-size:.82rem;font-weight:800;color:var(--txt-1);margin-bottom:9px}
+.day-pills{display:flex;flex-wrap:wrap;gap:8px}
+.day-pill{padding:8px 14px;border:1.5px solid var(--br);border-radius:var(--r-pill);background:rgba(67,99,126,.04);color:var(--txt-2);font-size:.78rem;font-weight:700;cursor:pointer;transition:var(--t);white-space:nowrap}
+.day-pill:hover{border-color:var(--br-hi);color:var(--txt-1)}
+.day-pill.active{background:linear-gradient(135deg,var(--ink-d),var(--ink-m));border-color:transparent;color:#fff;box-shadow:var(--sh-teal)}
+.goal-pill.active{background:linear-gradient(135deg,var(--sand-d),var(--sand-m));box-shadow:var(--sh-terra)}
+.planner-date-input{width:100%;padding:12px 16px;background:rgba(67,99,126,.05);border:1.5px solid var(--br);border-radius:var(--r-lg);color:var(--txt-1);font-family:var(--font);font-size:.88rem;outline:none;transition:var(--t)}
+.planner-date-input:focus{border-color:var(--ink-m);box-shadow:var(--sh-f)}
+.planner-generate-btn{display:block;width:100%;margin-top:22px;padding:15px;background:linear-gradient(135deg,var(--ink-d),var(--ink-m));border:none;border-radius:var(--r-lg);color:#fff;font-size:.94rem;font-weight:800;cursor:pointer;transition:var(--ts);box-shadow:var(--sh-teal)}
+.planner-generate-btn:hover{transform:translateY(-2px)}
+.planner-generate-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.planner-hint{text-align:center;font-size:.72rem;color:var(--txt-3);margin-top:9px}
+.planner-result-card .card-header{position:relative}
+.planner-regenerate-btn{margin-right:auto;padding:7px 13px;background:rgba(67,99,126,.08);border:1.5px solid var(--br);border-radius:var(--r-pill);color:var(--txt-2);font-size:.72rem;font-weight:700;cursor:pointer;transition:var(--t)}
+.planner-regenerate-btn:hover{border-color:var(--br-hi);color:var(--ink-l)}
+.planner-summary{font-size:.88rem;color:var(--txt-2);line-height:1.8;padding:12px 14px;background:rgba(67,99,126,.06);border:1px solid var(--br);border-radius:var(--r-lg);margin-bottom:16px}
+.planner-week-grid{display:flex;flex-direction:column;gap:10px}
+.day-plan-card{border:1px solid var(--br);border-radius:var(--r-lg);padding:12px 14px;background:rgba(16,38,60,.025)}
+.day-plan-title{font-size:.86rem;font-weight:800;color:var(--ink-l);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.day-plan-block{display:flex;align-items:flex-start;gap:10px;padding:7px 0;border-top:1px dashed var(--br)}
+.day-plan-block:first-of-type{border-top:none}
+.block-time{flex-shrink:0;font-size:.68rem;font-weight:800;color:var(--txt-3);min-width:78px;padding-top:2px}
+.block-body{flex:1;min-width:0}
+.block-subject{font-size:.82rem;font-weight:800;color:var(--txt-1)}
+.block-task{font-size:.76rem;color:var(--txt-2);margin-top:1px}
+.day-plan-empty{font-size:.78rem;color:var(--txt-3);font-style:italic}
+.planner-tips{margin-top:16px;padding-top:14px;border-top:1px solid var(--br)}
+.planner-tips-title{font-size:.8rem;font-weight:800;color:var(--sand-l);margin-bottom:8px}
+.planner-tip{font-size:.8rem;color:var(--txt-2);padding:5px 0 5px 0;display:flex;gap:8px;line-height:1.6}
+.planner-tip::before{content:'💡';flex-shrink:0}
+
+/* ══════════ STUDENT DASHBOARD ══════════ */
+.dashboard-login-cta{text-align:center;padding:38px 24px}
+.dlc-icon{font-size:2.6rem;margin-bottom:14px}
+.dlc-title{font-size:1.05rem;font-weight:900;color:var(--txt-1);margin-bottom:8px}
+.dlc-desc{font-size:.85rem;color:var(--txt-2);line-height:1.7;margin-bottom:20px;max-width:320px;margin-left:auto;margin-right:auto}
+.dlc-btn{max-width:280px;margin:0 auto}
+.dashboard-content.hidden,.dashboard-login-cta.hidden{display:none}
+.dashboard-welcome{font-size:1rem;font-weight:800;color:var(--txt-1);margin-bottom:16px}
+.dashboard-stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+.dstat-card{background:var(--bg-card);border:1px solid var(--br);border-radius:var(--r-lg);padding:14px 8px;text-align:center}
+.dstat-icon{font-size:1.3rem;margin-bottom:4px}
+.dstat-num{font-size:1.2rem;font-weight:900;color:var(--txt-1)}
+.dstat-label{font-size:.65rem;color:var(--txt-3);font-weight:700;margin-top:2px}
+.dashboard-section-card{margin-top:14px}
+.dash-plan-preview{font-size:.82rem;color:var(--txt-2);line-height:1.7}
+.dash-plan-empty,.dash-activity-empty{font-size:.82rem;color:var(--txt-3);text-align:center;padding:18px 0}
+.dash-activity-list{display:flex;flex-direction:column;gap:2px}
+.dash-activity-item{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--br)}
+.dash-activity-item:first-child{border-top:none}
+.dash-activity-icon{width:32px;height:32px;flex-shrink:0;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:.95rem;background:rgba(67,99,126,.1)}
+.dash-activity-body{flex:1;min-width:0}
+.dash-activity-snippet{font-size:.8rem;color:var(--txt-1);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dash-activity-time{font-size:.68rem;color:var(--txt-3);margin-top:1px}
+@media(max-width:480px){.dashboard-stats-grid{grid-template-columns:repeat(2,1fr)}}
+
+.school-people-list{display:flex;flex-direction:column}
+.school-person-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--br)}
+.school-person-row:first-child{border-top:none}
+.school-person-avatar{width:34px;height:34px;flex-shrink:0;border-radius:50%;background:rgba(67,99,126,.12);display:flex;align-items:center;justify-content:center;font-size:.95rem;font-weight:900;color:var(--ink-l)}
+.school-person-body{flex:1;min-width:0}
+.school-person-name{font-size:.83rem;font-weight:800;color:var(--txt-1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.school-person-sub{font-size:.7rem;color:var(--txt-3);margin-top:1px}
+.school-person-streak{flex-shrink:0;font-size:.74rem;font-weight:800;color:var(--sand-l);background:rgba(101,220,213,.1);border:1px solid rgba(101,220,213,.3);border-radius:var(--r-pill);padding:4px 10px;white-space:nowrap}
+.school-person-streak.inactive{color:var(--txt-3);background:rgba(16,38,60,.035);border-color:var(--br)}
+.school-list-empty{font-size:.8rem;color:var(--txt-3);text-align:center;padding:16px 0}
+
+.teacher-attention-hint{font-size:.74rem;color:var(--txt-3);margin:-8px 0 10px}
+.teacher-grade-filter-wrap{margin-right:auto;width:auto;min-width:110px}
+.teacher-grade-filter-wrap .selector{padding:6px 26px 6px 10px;font-size:.74rem;min-height:32px}
+
+/* ══════════ PARENT DASHBOARD ══════════ */
+.parent-add-hint{font-size:.76rem;color:var(--txt-3);margin:-6px 0 12px;line-height:1.6}
+.parent-add-row{display:flex;gap:8px;flex-wrap:wrap}
+.parent-add-row input{flex:1;min-width:180px}
+.parent-add-btn{width:auto;flex-shrink:0;margin-top:0;padding:12px 20px}
+.request-actions{display:flex;gap:6px;flex-shrink:0}
+.request-approve-btn,.request-reject-btn{width:30px;height:30px;border-radius:50%;border:none;cursor:pointer;font-size:.8rem;display:flex;align-items:center;justify-content:center;transition:var(--t)}
+.request-approve-btn{background:rgba(47,125,82,.15);color:#1F5F3E}
+.request-approve-btn:hover{background:rgba(47,125,82,.3);transform:scale(1.08)}
+.request-reject-btn{background:rgba(178,58,52,.12);color:#B23A34}
+.request-reject-btn:hover{background:rgba(178,58,52,.2);transform:scale(1.08)}
+.parent-child-card{background:var(--bg-card);border:1px solid var(--br);border-radius:var(--r-xl);padding:16px;margin-bottom:12px}
+.parent-child-header{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.parent-child-name{font-size:.92rem;font-weight:900;color:var(--txt-1)}
+.parent-child-grade{font-size:.72rem;color:var(--txt-3);margin-top:1px}
+.parent-child-stats{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
+.parent-child-stat-chip{background:rgba(67,99,126,.08);border:1px solid var(--br);border-radius:var(--r-pill);padding:5px 11px;font-size:.71rem;font-weight:700;color:var(--txt-2);white-space:nowrap}
+.parent-child-plan{font-size:.78rem;color:var(--txt-2);margin-bottom:10px;padding:9px 11px;background:rgba(67,99,126,.05);border-radius:var(--r-md);line-height:1.6}
+.parent-child-activity-title{font-size:.72rem;font-weight:800;color:var(--txt-3);margin-bottom:6px}
+.parent-child-activity-item{font-size:.76rem;color:var(--txt-2);padding:5px 0;border-top:1px dashed var(--br)}
+.parent-child-activity-item:first-child{border-top:none}
+
+/* ══════════ MINISTRY DASHBOARD ══════════ */
+.ministry-grade-chart{display:flex;flex-direction:column;gap:9px}
+.ministry-grade-row{display:flex;align-items:center;gap:10px}
+.ministry-grade-label{font-size:.74rem;font-weight:700;color:var(--txt-2);width:76px;flex-shrink:0}
+.ministry-grade-bar-wrap{flex:1;height:16px;background:rgba(16,38,60,.045);border-radius:var(--r-pill);overflow:hidden}
+.ministry-grade-bar{height:100%;background:linear-gradient(90deg,var(--ink-d),var(--ink-m));border-radius:var(--r-pill);transition:width .6s var(--ease);min-width:3px}
+.ministry-grade-count{font-size:.72rem;font-weight:800;color:var(--txt-3);width:26px;text-align:left;flex-shrink:0}
+.ministry-schools-table{display:flex;flex-direction:column}
+.ministry-school-row{display:flex;align-items:center;gap:10px;padding:11px 0;border-top:1px solid var(--br);flex-wrap:wrap}
+.ministry-school-row:first-child{border-top:none}
+.ministry-school-name{flex:1;min-width:100px;font-size:.83rem;font-weight:800;color:var(--txt-1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ministry-school-stats{display:flex;gap:6px;flex-wrap:wrap;flex-shrink:0}
+.ministry-school-chip{font-size:.68rem;font-weight:700;color:var(--txt-3);background:rgba(67,99,126,.06);border:1px solid var(--br);border-radius:var(--r-pill);padding:3px 9px;white-space:nowrap}
+
+/* ══════════ BADGES ══════════ */
+.badges-count-chip{margin-right:auto;font-size:.72rem;font-weight:800;color:var(--ink-l);background:rgba(67,99,126,.1);border:1px solid var(--br-hi);border-radius:var(--r-pill);padding:4px 11px;flex-shrink:0}
+.badges-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:10px}
+.badge-card{display:flex;flex-direction:column;align-items:center;gap:5px;padding:12px 6px;border-radius:var(--r-lg);border:1px solid var(--br);background:rgba(16,38,60,.025);text-align:center;transition:var(--t)}
+.badge-card.earned{background:linear-gradient(160deg,rgba(67,99,126,.12),rgba(101,220,213,.08));border-color:var(--br-hi)}
+.badge-card.locked{opacity:.42;filter:grayscale(.6)}
+.badge-icon{font-size:1.6rem}
+.badge-title{font-size:.66rem;font-weight:800;color:var(--txt-1);line-height:1.3}
+.badge-progress{font-size:.6rem;color:var(--txt-3);font-weight:700}
+
+/* ══════════ LEADERBOARD ══════════ */
+.leaderboard-scope-toggle{display:flex;gap:6px;margin-bottom:14px;background:rgba(67,99,126,.05);border-radius:var(--r-pill);padding:4px;width:fit-content}
+.leaderboard-scope-toggle .voice-lang-btn{padding:8px 16px;font-size:.78rem}
+.my-rank-card{display:flex;align-items:center;gap:14px;padding:16px 18px;margin-bottom:14px;background:linear-gradient(135deg,rgba(67,99,126,.12),rgba(101,220,213,.1));border:1.5px solid var(--br-hi)}
+.my-rank-card.hidden{display:none}
+.my-rank-num{font-size:1.7rem;font-weight:900;color:var(--ink-l);flex-shrink:0}
+.my-rank-title{font-size:.78rem;font-weight:700;color:var(--txt-3)}
+.my-rank-points{font-size:.95rem;font-weight:900;color:var(--txt-1)}
+.leaderboard-list{display:flex;flex-direction:column}
+.leaderboard-row{display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid var(--br)}
+.leaderboard-row:first-child{border-top:none}
+.leaderboard-rank{width:28px;flex-shrink:0;text-align:center;font-size:.9rem;font-weight:900;color:var(--txt-3)}
+.leaderboard-row.top1 .leaderboard-rank{color:#2A9089;font-size:1.15rem}
+.leaderboard-row.top2 .leaderboard-rank{color:#8A93A1;font-size:1.05rem}
+.leaderboard-row.top3 .leaderboard-rank{color:#96693F;font-size:1rem}
+.leaderboard-row.is-me{background:rgba(67,99,126,.06);border-radius:var(--r-md);margin:0 -8px;padding:11px 8px}
+.leaderboard-body{flex:1;min-width:0}
+.leaderboard-name{font-size:.85rem;font-weight:800;color:var(--txt-1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.leaderboard-sub{font-size:.7rem;color:var(--txt-3)}
+.leaderboard-points{flex-shrink:0;font-size:.8rem;font-weight:800;color:var(--sand-l)}
+
+/* ══════════ INTERACTIVE QUIZ ══════════ */
+.quiz-wrap{display:flex;flex-direction:column;gap:18px}
+.quiz-topic{font-size:.95rem;font-weight:900;color:var(--txt-1);padding-bottom:12px;border-bottom:1px solid var(--br)}
+.quiz-question-block{display:flex;flex-direction:column;gap:10px}
+.quiz-question-num{font-size:.7rem;font-weight:800;color:var(--txt-3);text-transform:uppercase;letter-spacing:.02em}
+.quiz-question-text{font-size:.9rem;font-weight:700;color:var(--txt-1);line-height:1.6}
+.quiz-options{display:flex;flex-direction:column;gap:8px}
+.quiz-option{display:flex;align-items:center;gap:10px;padding:11px 14px;border:1.5px solid var(--br);border-radius:var(--r-lg);background:rgba(16,38,60,.025);cursor:pointer;transition:var(--t)}
+.quiz-option-icon{margin-right:auto;font-size:1rem;font-weight:900;flex-shrink:0;width:20px;text-align:center}
+.quiz-option.answered.correct .quiz-option-icon{color:#1F5F3E}
+.quiz-option.answered.incorrect .quiz-option-icon{color:#8A2E29}
+.quiz-option:hover{border-color:var(--br-hi);background:rgba(67,99,126,.05)}
+.quiz-option input{accent-color:#43637E;width:16px;height:16px;flex-shrink:0;cursor:pointer}
+.quiz-option-text{font-size:.83rem;color:var(--txt-2);font-weight:600}
+.quiz-option.answered{cursor:default}
+.quiz-option.answered:hover{background:rgba(16,38,60,.025)}
+.quiz-option.answered.correct{border-color:#2F7D52;background:rgba(47,125,82,.12)}
+.quiz-option.answered.correct .quiz-option-text{color:#1F5F3E;font-weight:800}
+.quiz-option.answered.incorrect{border-color:#B23A34;background:rgba(178,58,52,.1)}
+.quiz-option.answered.incorrect .quiz-option-text{color:#8A2E29;font-weight:800}
+.quiz-explanation{font-size:.78rem;line-height:1.7;padding:10px 12px;border-radius:var(--r-md);background:rgba(16,38,60,.035)}
+.quiz-explanation.hidden{display:none}
+.quiz-explanation.correct-exp{color:#1F5F3E;background:rgba(47,125,82,.08)}
+.quiz-explanation.incorrect-exp{color:var(--txt-2);background:rgba(178,58,52,.06)}
+.quiz-submit-btn{background:linear-gradient(135deg,#321E48,#43637E)!important;box-shadow:0 4px 16px rgba(67,99,126,.3)!important}
+.quiz-submit-btn:disabled{opacity:.7;cursor:default;transform:none!important}
+.quiz-result{text-align:center}
+.quiz-result.hidden{display:none}
+.quiz-score-chip{display:inline-block;padding:12px 24px;font-size:1.05rem;font-weight:900;color:var(--txt-1);background:linear-gradient(135deg,rgba(67,99,126,.15),rgba(67,99,126,.1));border:1.5px solid var(--br-hi);border-radius:var(--r-pill)}
+
+/* ══════════ COMING SOON (PDF + MEETING) ══════════ */
+.nav-pill-soon{position:relative}
+.soon-dot{position:absolute;top:4px;left:4px;width:7px;height:7px;border-radius:50%;background:var(--sand-l);box-shadow:0 0 0 0 rgba(101,220,213,.6);animation:soon-dot-pulse 1.8s ease-in-out infinite}
+@keyframes soon-dot-pulse{0%,100%{box-shadow:0 0 0 0 rgba(101,220,213,.5)}50%{box-shadow:0 0 0 5px rgba(101,220,213,0)}}
+.soon-page{max-width:520px;margin:0 auto;text-align:center;padding:8px 4px 24px}
+.soon-badge-top{display:inline-flex;align-items:center;gap:6px;background:rgba(101,220,213,.12);border:1.5px solid rgba(101,220,213,.4);color:var(--sand-l);font-size:.78rem;font-weight:800;padding:7px 16px;border-radius:var(--r-pill);margin-bottom:22px}
+.soon-icon-stack{position:relative;width:100px;height:100px;margin:0 auto 22px;display:flex;align-items:center;justify-content:center}
+.soon-icon-main{font-size:3.6rem;animation:soon-float 3s ease-in-out infinite}
+@keyframes soon-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.soon-icon-orbit{position:absolute;bottom:2px;left:2px;font-size:1.6rem;background:var(--bg2);border:2px solid var(--br-hi);border-radius:50%;width:42px;height:42px;display:flex;align-items:center;justify-content:center;animation:soon-orbit-pulse 2.4s ease-in-out infinite}
+@keyframes soon-orbit-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+.soon-title{font-size:1.3rem;font-weight:900;line-height:1.5;color:var(--txt-1);margin-bottom:14px}
+.soon-desc{font-size:.88rem;color:var(--txt-2);line-height:1.85;margin-bottom:26px}
+.soon-features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:26px}
+.soon-feature-card{background:var(--bg-card);border:1px solid var(--br);border-radius:var(--r-lg);padding:16px 8px}
+.soon-feature-icon{font-size:1.5rem;margin-bottom:8px}
+.soon-feature-title{font-size:.78rem;font-weight:800;color:var(--txt-1);margin-bottom:3px}
+.soon-feature-sub{font-size:.66rem;color:var(--txt-3);line-height:1.5}
+.soon-cta-card{background:linear-gradient(135deg,rgba(67,99,126,.08),rgba(101,220,213,.08));border:1.5px solid var(--br-hi);border-radius:var(--r-xl);padding:22px 20px}
+.soon-cta-text{font-size:.88rem;font-weight:800;color:var(--txt-1);margin-bottom:4px}
+.soon-cta-count{font-size:.76rem;color:var(--txt-3);margin-bottom:16px}
+.soon-notify-btn{max-width:260px;margin:0 auto}
+.soon-notify-btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
+@media(max-width:420px){.soon-features-grid{grid-template-columns:1fr}}
+
+/* ══════════ FOCUS (كل المستخدمين، مش بس وضع سهولة الوصول) ══════════ */
+:focus-visible{outline:3px solid var(--ink-m);outline-offset:2px;border-radius:4px}
+.selector:focus-visible,.question-input:focus-visible,.planner-date-input:focus-visible{outline:3px solid var(--ink-m);outline-offset:1px}
+
+/* ══════════ وضع سهولة الوصول الشامل (a11y-mode) ══════════
+   بيغطي: ضعف البصر/العمى، صعوبات حركية، عسر القراءة/صعوبات التعلّم،
+   اضطرابات الحس الحركي والحساسية للحركة، وصعوبات الانتباه/التركيز */
+html.a11y-mode{font-size:104%}
+html.a11y-mode *,html.a11y-mode *::before,html.a11y-mode *::after{
+  animation-duration:.001ms!important;animation-iteration-count:1!important;
+  transition-duration:.001ms!important;scroll-behavior:auto!important
+}
+html.a11y-mode body{line-height:1.95;letter-spacing:.015em;word-spacing:.04em}
+html.a11y-mode p,html.a11y-mode .response-body,html.a11y-mode .lgc-snippet,
+html.a11y-mode .dash-activity-snippet,html.a11y-mode .planner-summary{line-height:2!important}
+html.a11y-mode{
+  --txt-2:#241536; --txt-3:#3D3050;
+  --br:rgba(50,30,72,.4); --br-hi:rgba(50,30,72,.65);
+}
+html.a11y-mode .blob{display:none}
+html.a11y-mode .bg-base{opacity:.4}
+html.a11y-mode .card,html.a11y-mode .response-card,html.a11y-mode .lesson-card,
+html.a11y-mode .lesson-grid-card{border-width:2px!important}
+html.a11y-mode button,html.a11y-mode .action-btn,html.a11y-mode .nav-pill,
+html.a11y-mode input,html.a11y-mode select,html.a11y-mode .selector{min-height:52px!important}
+html.a11y-mode .action-btn{border-width:2px!important}
+html.a11y-mode :focus-visible{outline:4px solid var(--ink-m)!important;outline-offset:3px!important}
+html.a11y-mode .hero-title,html.a11y-mode .card-label,html.a11y-mode .lgc-title{font-weight:900!important}
+html.a11y-mode .btn-hint,html.a11y-mode .lgc-snippet,html.a11y-mode .streak-sub,
+html.a11y-mode .dash-activity-time,html.a11y-mode .school-person-sub{font-size:.85em!important}
+
+/* رابط تخطي المحتوى — لمستخدمي لوحة المفاتيح وقارئ الشاشة */
+.skip-link{position:fixed;top:-60px;right:16px;z-index:10000;background:var(--ink-m);color:#fff;
+  padding:12px 22px;border-radius:var(--r-md);font-weight:800;font-size:.85rem;text-decoration:none;
+  transition:top .2s var(--ease);box-shadow:var(--sh-h)}
+.skip-link:focus{top:16px}
+
+/* مستويات حجم الخط القابلة للتعديل بشكل مستقل */
+html.a11y-font-lg{font-size:113%}
+html.a11y-font-xl{font-size:130%}
+
+/* خط سهل لعسر القراءة — مسافات أوسع بين الحروف والكلمات والسطور */
+html.a11y-dyslexia body{letter-spacing:.025em;word-spacing:.07em}
+html.a11y-dyslexia p,html.a11y-dyslexia .response-body,html.a11y-dyslexia .lgc-snippet,
+html.a11y-dyslexia .planner-summary,html.a11y-dyslexia .day-plan-task,
+html.a11y-dyslexia .voice-bubble{line-height:2.15!important;letter-spacing:.02em!important}
+
+/* لوحة سهولة الوصول العائمة */
+.a11y-panel-overlay{position:fixed;inset:0;background:rgba(10,11,15,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);z-index:9997;display:flex;align-items:center;justify-content:center;padding:20px;animation:ovin .25s var(--ease) both}
+.a11y-panel-overlay.hidden{display:none}
+.a11y-panel{position:relative;display:flex;flex-direction:column;gap:10px;background:var(--bg2);
+  border:2px solid var(--ink-m);border-radius:var(--r-xl);padding:18px 20px;box-shadow:var(--sh-h);
+  width:min(360px,92vw);max-height:min(85vh,620px);overflow-y:auto;animation:cin .3s var(--spring) both}
+.a11y-panel-row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.a11y-panel-label{font-size:.78rem;font-weight:800;color:var(--txt-1)}
+.a11y-panel-btns{display:flex;gap:5px;flex-shrink:0}
+.a11y-panel-btns button{background:rgba(67,99,126,.08);color:var(--ink-m);border:1.5px solid var(--br);
+  border-radius:var(--r-sm);min-width:34px;height:34px;padding:0 8px;font-size:.72rem;font-weight:800;
+  cursor:pointer;transition:var(--t)}
+.a11y-panel-btns button:hover{background:rgba(67,99,126,.15)}
+.a11y-panel-btns button.active{background:var(--ink-m);color:#fff;border-color:var(--ink-m)}
+.a11y-panel-read .a11y-panel-btns button{border-radius:50%;width:36px;min-width:36px}
+.a11y-panel-switch{width:44px;height:26px;border-radius:var(--r-pill);background:var(--br-hi);
+  border:none;cursor:pointer;position:relative;flex-shrink:0;transition:var(--t)}
+.a11y-panel-switch[aria-checked="true"]{background:var(--ink-m)}
+.a11y-switch-dot{position:absolute;top:3px;right:3px;width:20px;height:20px;border-radius:50%;
+  background:#fff;transition:var(--t);box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.a11y-panel-switch[aria-checked="true"] .a11y-switch-dot{right:21px}
+.a11y-panel-header{position:sticky;top:-18px;margin:-18px -20px 6px;padding:16px 20px 10px;
+  background:var(--bg2);display:flex;align-items:center;justify-content:space-between;z-index:1;
+  border-bottom:1px solid var(--br)}
+.a11y-panel-title{font-size:.88rem;font-weight:900;color:var(--txt-1)}
+.a11y-panel-close{background:rgba(50,30,72,.06);border:none;border-radius:8px;width:28px;height:28px;
+  font-size:.8rem;color:var(--txt-2);cursor:pointer}
+.a11y-panel-close:hover{background:rgba(50,30,72,.12)}
+.a11y-panel-divider{height:1px;background:var(--br);margin:2px 0}
+.a11y-panel-reset-all{background:rgba(178,58,52,.08);color:#8A2E29;border:1.5px solid rgba(178,58,52,.25);
+  border-radius:var(--r-md);padding:9px;font-size:.76rem;font-weight:800;cursor:pointer;transition:var(--t)}
+.a11y-panel-reset-all:hover{background:rgba(178,58,52,.15)}
+.a11y-voice-diag{display:flex;flex-direction:column;gap:8px}
+.a11y-voice-check-btn{background:rgba(67,99,126,.06);color:var(--ink-m);border:1.5px dashed var(--br-hi);
+  border-radius:var(--r-md);padding:9px;font-size:.74rem;font-weight:800;cursor:pointer;transition:var(--t)}
+.a11y-voice-check-btn:hover{background:rgba(67,99,126,.12)}
+.a11y-voice-diag-result{font-size:.72rem;line-height:1.7;color:var(--txt-2);background:rgba(50,30,72,.04);
+  border-radius:var(--r-md);padding:8px 10px}
+.a11y-voice-diag-result.hidden{display:none}
+.a11y-voice-diag-result.ok{color:#1F5F3E;background:rgba(47,125,82,.08)}
+.a11y-voice-diag-result.warn{color:#8A2E29;background:rgba(178,58,52,.08)}
+#a11yVoicePickerWrap{margin-top:2px}
+#a11yVoicePicker{font-size:.74rem;padding:9px 32px 9px 10px;min-height:38px}
+
+/* ══════════ وضع المسح بمفتاح واحد (Switch Scanning) ══════════ */
+.a11y-switch-scan-box{background:rgba(50,30,72,.04);border-radius:var(--r-lg);padding:12px 14px}
+.a11y-switch-scan-hint{font-size:.7rem;line-height:1.7;color:var(--txt-2);margin:6px 0 10px}
+.switch-scan-highlight{outline:5px solid var(--sand-m)!important;outline-offset:3px!important;
+  border-radius:8px;position:relative!important;z-index:9995!important;
+  animation:switchScanPulse 1.1s ease-in-out infinite;transition:outline-color .2s}
+@keyframes switchScanPulse{0%,100%{outline-color:var(--sand-m)}50%{outline-color:var(--ink-m)}}
+.a11y-switch-scan-indicator{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:9998;
+  display:flex;align-items:center;gap:12px;background:var(--ink-d);color:#fff;padding:12px 20px;
+  border-radius:var(--r-pill);font-size:.8rem;font-weight:700;box-shadow:var(--sh-h);max-width:94vw;flex-wrap:wrap;justify-content:center}
+.a11y-switch-scan-indicator.hidden{display:none}
+.a11y-switch-scan-indicator kbd{background:rgba(255,255,255,.2);padding:2px 8px;border-radius:5px;font-family:inherit}
+.a11y-switch-scan-indicator button{background:rgba(255,255,255,.15);color:#fff;border:none;border-radius:var(--r-pill);
+  padding:6px 14px;font-size:.74rem;font-weight:800;cursor:pointer}
+.a11y-switch-scan-indicator button:hover{background:rgba(255,255,255,.28)}
+
+/* تدرج رمادي — يفيد الحساسية للألوان وبعض حالات المعالجة البصرية */
+html.a11y-grayscale{filter:grayscale(1)}
+
+/* مؤشر كبير — يفيد ضعاف البصر وأصحاب صعوبات التحكم الحركي الدقيق */
+html.a11y-big-cursor,html.a11y-big-cursor *{
+  cursor:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path d="M4 2l14 8-6 2-2 6z" fill="black" stroke="white" stroke-width="1.5"/></svg>') 4 4,auto!important}
+
+/* إلغاء الشفافية/الضبابية — يفيد أصحاب حساسية التباين وصعوبة قراءة الخلفيات الزجاجية */
+html.a11y-opaque .header,html.a11y-opaque .footer,html.a11y-opaque .card,
+html.a11y-opaque .response-card,html.a11y-opaque .lesson-card,html.a11y-opaque .auth-card,
+html.a11y-opaque .voice-card,html.a11y-opaque .simple-card,html.a11y-opaque .a11y-panel,
+html.a11y-opaque .streak-celebrate-card,html.a11y-opaque .dstat-card{
+  backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:var(--bg2)!important;opacity:1!important}
+html.a11y-opaque .blob{display:none}
+
+/* تسطير الروابط والعناصر التفاعلية — يفيد عمى الألوان (متعرفش الروابط من لونها بس) */
+html.a11y-underline a,html.a11y-underline .nav-pill,html.a11y-underline .action-btn .btn-text,
+html.a11y-underline .lgc-title,html.a11y-underline .card-label{text-decoration:underline!important;text-underline-offset:3px}
+
+/* مسطرة تتبّع القراءة — بتتحرك مع الماوس لمساعدة عسر القراءة وصعوبات التركيز */
+.a11y-reading-ruler{position:fixed;left:0;width:100%;height:38px;background:rgba(101,220,213,.22);
+  border-top:2px solid var(--sand-m);border-bottom:2px solid var(--sand-m);pointer-events:none;
+  z-index:9996;transition:top .05s linear}
+.a11y-reading-ruler.hidden{display:none}
+
+/* ══════════ RESPONSE STATES ══════════ */
+.response-card{min-height:175px}
+.loading-state{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 0;gap:18px}
+.ai-spinner{position:relative;width:68px;height:68px}
+.spin-center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:1.75rem;z-index:2;animation:sbreathe 2s ease-in-out infinite}
+@keyframes sbreathe{0%,100%{transform:scale(1)}50%{transform:scale(1.1) translateY(-2px)}}
+.spin-ring{position:absolute;border:2px solid transparent;border-radius:50%;animation:sp linear infinite}
+.spin-ring-1{inset:0;border-top-color:var(--ink-m);animation-duration:1s}
+.spin-ring-2{inset:9px;border-right-color:var(--sand-l);animation-duration:1.6s;animation-direction:reverse}
+.spin-ring-3{inset:18px;border-bottom-color:var(--ink-l);animation-duration:2.2s}
+@keyframes sp{to{transform:rotate(360deg)}}
+.loading-text{font-size:.88rem;font-weight:600;color:var(--txt-2);animation:ltxt 1.5s ease-in-out infinite}
+@keyframes ltxt{0%,100%{opacity:.4}50%{opacity:1}}
+ 
+.empty-state{display:flex;flex-direction:column;align-items:center;gap:10px;padding:32px 16px;text-align:center}
+.empty-icon-wrap{width:60px;height:60px;background:rgba(67,99,126,.1);border:1.5px solid var(--br-hi);border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:1.9rem;margin-bottom:6px;animation:floatic 3.5s ease-in-out infinite}
+@keyframes floatic{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.empty-title{font-size:1rem;font-weight:800;color:var(--txt-1)}
+.empty-sub{font-size:.82rem;color:var(--txt-2)}
+.empty-chips{display:flex;gap:7px;flex-wrap:wrap;justify-content:center;margin-top:9px}
+.empty-chip{padding:5px 11px;background:rgba(67,99,126,.07);border:1px solid var(--br);border-radius:var(--r-pill);font-size:.7rem;color:var(--txt-2);font-weight:600;transition:var(--t)}
+.empty-chip:hover{background:rgba(67,99,126,.14);border-color:var(--br-hi);color:var(--ink-l)}
+ 
+.response-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--br)}
+.response-badge{display:inline-flex;align-items:center;gap:5px;padding:5px 14px;background:rgba(67,99,126,.12);border:1px solid var(--br-hi);border-radius:var(--r-pill);font-size:.75rem;font-weight:800;color:var(--ink-l)}
+.badge-summarize{background:rgba(101,220,213,.12);border-color:rgba(101,220,213,.4);color:var(--sand-l)}
+.badge-questions{background:rgba(42,144,137,.12);border-color:rgba(42,144,137,.4);color:#A8ECE7}
+.badge-homework{background:rgba(47,125,82,.12);border-color:rgba(47,125,82,.4);color:#1F5F3E}
+.badge-quiz{background:rgba(67,99,126,.12);border-color:rgba(67,99,126,.4);color:#5B92A8}
+.response-actions{display:flex;gap:7px}
+.icon-btn{width:36px;height:36px;background:rgba(67,99,126,.07);border:1.5px solid var(--br);border-radius:10px;color:var(--txt-3);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:var(--ts);padding:0}
+.icon-btn svg{width:15px;height:15px}
+.icon-btn:hover{color:var(--ink-l);border-color:var(--ink-m);background:rgba(67,99,126,.14);transform:translateY(-1px) scale(1.05)}
+.icon-btn.active{background:rgba(67,99,126,.2);border-color:var(--ink-m);color:var(--ink-l)}
+.response-body{font-size:.91rem;line-height:1.85;color:var(--txt-2);animation:cin .35s var(--ease) both}
+.response-body h3{font-size:.97rem;font-weight:800;color:var(--ink-l);margin:18px 0 8px;padding-right:12px;border-right:3px solid var(--ink-m)}
+.response-body h3:first-child{margin-top:0}
+.response-body p{margin-bottom:10px}
+.response-body p:last-child{margin-bottom:0}
+.response-body ul{list-style:none;margin:8px 0;padding:0}
+.response-body ul li{padding:6px 20px 6px 0;position:relative;border-bottom:1px solid var(--br-g)}
+.response-body ul li:last-child{border-bottom:none}
+.response-body ul li::before{content:'';position:absolute;right:0;top:14px;width:6px;height:6px;background:var(--ink-m);border-radius:50%}
+.response-body strong{color:var(--txt-1);font-weight:800}
+.response-body em{color:var(--sand-l);font-style:italic}
+.example-block{background:rgba(67,99,126,.07);border:1px solid var(--br-hi);border-right:3px solid var(--ink-m);border-radius:var(--r-md);padding:12px 14px;margin:10px 0;font-size:.86rem;color:var(--txt-2)}
+ 
+.error-state{display:flex;flex-direction:column;align-items:center;gap:12px;padding:36px;text-align:center}
+.error-icon{font-size:2.2rem}
+.error-state p{color:var(--txt-2);font-size:.87rem}
+.retry-btn{padding:11px 24px;background:linear-gradient(135deg,var(--ink-d),var(--ink-m));border:none;border-radius:var(--r-pill);color:#fff;font-size:.88rem;font-weight:800;cursor:pointer;transition:var(--ts);box-shadow:var(--sh-teal);min-height:44px}
+.retry-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(67,99,126,.4)}
+ 
+/* ══════════ LESSONS GRID ══════════ */
+.lessons-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:10px}
+@media(min-width:520px){.lessons-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:780px){.lessons-grid{grid-template-columns:repeat(3,1fr)}}
+.lesson-grid-card{background:var(--bg-card);border:1px solid var(--br);border-radius:var(--r-xl);padding:16px;position:relative;overflow:hidden;box-shadow:var(--sh);transition:var(--ts);animation:cin .45s var(--spring) both}
+.lesson-grid-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--ink-d),var(--sand-l));transform:scaleX(0);transform-origin:right;transition:transform .3s var(--ease)}
+.lesson-grid-card:hover{border-color:var(--br-hi);transform:translateY(-4px);box-shadow:var(--sh-h)}
+.lesson-grid-card:hover::after{transform:scaleX(1);transform-origin:left}
+.lgc-subject{display:inline-block;padding:3px 10px;background:rgba(67,99,126,.1);border:1px solid var(--br-hi);border-radius:var(--r-pill);font-size:.68rem;font-weight:800;color:var(--ink-l);margin-bottom:8px}
+.lgc-title{font-size:.9rem;font-weight:800;margin-bottom:4px;color:var(--txt-1)}
+.lgc-grade{font-size:.71rem;color:var(--sand-l);font-weight:700;margin-bottom:8px}
+.lgc-snippet{font-size:.78rem;color:var(--txt-3);line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:12px}
+.lgc-use-btn{width:100%;padding:10px;background:rgba(67,99,126,.08);border:1.5px solid var(--br-hi);border-radius:var(--r-md);color:var(--ink-l);font-size:.81rem;font-weight:800;cursor:pointer;transition:var(--ts);min-height:42px}
+.lgc-use-btn:hover{background:linear-gradient(135deg,var(--ink-d),var(--ink-m));color:#fff;border-color:transparent;box-shadow:var(--sh-teal);transform:translateY(-1px)}
+ 
+/* ══════════ ABOUT ══════════ */
+.about-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:10px;margin-bottom:18px}
+@media(min-width:520px){.about-grid{grid-template-columns:repeat(2,1fr)}}
+.about-card{background:var(--bg-card);border:1px solid var(--br);border-radius:var(--r-xl);padding:20px 16px;text-align:center;box-shadow:var(--sh);transition:var(--ts);animation:cin .45s var(--spring) both}
+.about-card:hover{border-color:var(--br-hi);transform:translateY(-4px);box-shadow:var(--sh-h)}
+.about-icon-wrap{width:48px;height:48px;margin:0 auto 10px;background:rgba(67,99,126,.1);border:1.5px solid var(--br-hi);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem}
+.about-card h3{font-size:.88rem;font-weight:800;margin-bottom:7px;color:var(--txt-1)}
+.about-card p{font-size:.78rem;color:var(--txt-2);line-height:1.7}
+.initiative-banner{background:var(--bg-card);border:1px solid var(--br-hi);border-radius:var(--r-xl);padding:28px 18px;text-align:center;position:relative;overflow:hidden;box-shadow:var(--sh)}
+.initiative-banner::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 50% at 20% 50%,rgba(67,99,126,.06),transparent 55%),radial-gradient(ellipse 40% 40% at 80% 50%,rgba(101,220,213,.05),transparent 55%)}
+.banner-logos{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:18px;flex-wrap:wrap}
+.b-logo{display:flex;flex-direction:column;align-items:center;gap:5px}
+.b-logo-img{height:52px;width:auto;object-fit:contain;border-radius:var(--r-md);box-shadow:var(--sh);transition:var(--ts);border:1px solid var(--br);padding:6px;background:#FFFFFF}
+.b-logo-img:hover{transform:translateY(-3px)}
+.b-logo small{font-size:.56rem;font-weight:700;color:var(--txt-3);text-align:center;max-width:78px}
+.banner-x{font-size:1.1rem;color:var(--txt-d);line-height:1}
+.banner-tagline{font-size:.95rem;font-weight:700;color:var(--txt-1);position:relative;z-index:1}
+ 
+/* ══════════ FOOTER ══════════ */
+.footer{position:relative;z-index:1;background:rgba(255,255,255,.75);border-top:1px solid var(--br);padding:22px var(--px) 28px;text-align:center;margin-top:14px;backdrop-filter:blur(16px)}
+.footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 0%,var(--ink-m) 30%,var(--sand-l) 70%,transparent 100%);opacity:.4}
+.footer-logos{display:flex;align-items:stretch;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+.footer-partners-label{font-size:.7rem;font-weight:800;color:var(--txt-3);letter-spacing:.04em;margin-bottom:14px;text-transform:uppercase}
+.footer-logo-card{display:flex;flex-direction:column;align-items:center;gap:8px;padding:12px 16px;background:#FFFFFF;border:1px solid var(--br);border-radius:var(--r-lg);box-shadow:var(--sh);transition:var(--ts);min-width:120px}
+.footer-logo-card:hover{transform:translateY(-3px);box-shadow:var(--sh-h)}
+.footer-logo-card img{height:38px;width:auto;object-fit:contain}
+.footer-logo-card span{font-size:.68rem;font-weight:700;color:var(--txt-2);white-space:nowrap}
+.footer-credit{font-size:.7rem;color:var(--txt-3)}
+.footer-credit strong{color:var(--ink-m);font-weight:700}
+ 
+/* ══════════ TOAST ══════════ */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(16,38,60,.96);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-pill);padding:11px 22px;font-size:.84rem;font-weight:700;color:var(--txt-d);z-index:9999;opacity:0;transition:all .3s var(--spring);white-space:nowrap;box-shadow:0 8px 28px rgba(16,38,60,.35);pointer-events:none;backdrop-filter:blur(16px);max-width:calc(100vw - 32px)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast.success{border-color:rgba(47,125,82,.6);color:#6FCB98}
+.toast.error{border-color:rgba(178,58,52,.6);color:#E39490}
+ 
+/* ══════════ SIMPLE MODE (Bottom Sheet on mobile) ══════════ */
+.simple-overlay{position:fixed;inset:0;background:rgba(10,11,15,.88);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);z-index:9998;display:flex;align-items:flex-end;justify-content:center;padding:0;animation:ovin .25s var(--ease) both}
+@media(min-width:600px){.simple-overlay{align-items:center;padding:24px}}
+@keyframes ovin{from{opacity:0}to{opacity:1}}
+.simple-overlay.hidden{display:none}
+.simple-card{background:var(--bg2);border:1px solid var(--br-hi);border-radius:var(--r-xl) var(--r-xl) 0 0;padding:24px 18px 36px;width:100%;max-height:85vh;overflow-y:auto;box-shadow:0 -8px 40px rgba(0,0,0,.5);animation:sheetup .35s var(--spring) both}
+@media(min-width:600px){.simple-card{border-radius:var(--r-xl);max-width:680px;padding:30px 26px;box-shadow:var(--sh-h);animation:cin .35s var(--spring) both}}
+@keyframes sheetup{from{opacity:0;transform:translateY(100%)}to{opacity:1;transform:translateY(0)}}
+.simple-card::before{content:'';display:block;width:40px;height:4px;background:var(--br-hi);border-radius:2px;margin:0 auto 18px}
+@media(min-width:600px){.simple-card::before{display:none}}
+.simple-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;font-size:.94rem;font-weight:800;color:var(--ink-l)}
+.simple-close{width:32px;height:32px;background:rgba(16,38,60,.05);border:1px solid var(--br);color:var(--txt-3);border-radius:8px;cursor:pointer;font-size:.85rem;transition:var(--t);display:flex;align-items:center;justify-content:center}
+.simple-close:hover{background:rgba(101,220,213,.1);border-color:rgba(101,220,213,.4);color:var(--sand-l)}
+.simple-content{font-size:1.08rem;line-height:2;color:var(--txt-2);white-space:pre-wrap;margin-bottom:22px;font-weight:500;letter-spacing:.02em;word-spacing:.05em}
+.simple-tts-btn{display:block;width:100%;padding:14px;background:linear-gradient(135deg,var(--ink-d),var(--ink-m));border:none;border-radius:var(--r-lg);color:#fff;font-size:.94rem;font-weight:800;cursor:pointer;transition:var(--ts);box-shadow:var(--sh-teal);min-height:50px}
+
+/* ══════════ STREAK CELEBRATION OVERLAY ══════════ */
+.streak-celebrate-overlay{position:fixed;inset:0;background:rgba(10,11,15,.88);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);z-index:9999;display:flex;align-items:center;justify-content:center;padding:24px;animation:ovin .25s var(--ease) both}
+.streak-celebrate-overlay.hidden{display:none}
+.streak-celebrate-card{background:var(--bg2);border:1.5px solid var(--br-hi);border-radius:var(--r-xl);padding:36px 26px;max-width:340px;width:100%;text-align:center;box-shadow:var(--sh-h);animation:sc-pop .45s var(--spring) both}
+@keyframes sc-pop{0%{opacity:0;transform:scale(.7) translateY(20px)}100%{opacity:1;transform:scale(1) translateY(0)}}
+.streak-celebrate-emoji{font-size:3.4rem;line-height:1;margin-bottom:12px;animation:sc-bounce 1s ease-in-out infinite}
+@keyframes sc-bounce{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-8px) scale(1.06)}}
+.streak-celebrate-title{font-size:1.25rem;font-weight:900;color:var(--txt-1);margin-bottom:8px}
+.streak-celebrate-desc{font-size:.88rem;color:var(--txt-2);line-height:1.7;margin-bottom:22px}
+.streak-celebrate-btn{display:block;width:100%;padding:13px;background:linear-gradient(135deg,var(--ink-d),var(--ink-m));border:none;border-radius:var(--r-lg);color:#fff;font-size:.9rem;font-weight:800;cursor:pointer;transition:var(--ts);box-shadow:var(--sh-teal)}
+.streak-celebrate-btn:hover{transform:translateY(-2px)}
+.simple-tts-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(67,99,126,.4)}
+ 
+/* ══════════ UTILITIES ══════════ */
+.hidden{display:none!important}
+::-webkit-scrollbar{width:4px;height:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--ink-d);border-radius:2px}
+:focus-visible{outline:2px solid var(--ink-m);outline-offset:3px;border-radius:var(--r-sm)}
+ 
+/* ══════════ RESPONSIVE ══════════ */
+@media(max-width:380px){
+  .hero-title{font-size:1.5rem}
+  .hero-stats{gap:12px}
+  .stat-num{font-size:1.3rem}
+  .nav-pill span:not(.pill-icon){display:none}
+  .nav-pill{padding:8px 10px}
+  .auth-label{display:none}
+  .auth-btn{padding:7px 9px}
+  .btn-hint{display:none}
+  .action-btn{min-height:68px;padding:11px 6px}
+}
+@media(min-width:640px){
+  :root{--px:22px;--cp:22px}
+  .hero{padding:40px 0 32px}
+}
+@media(min-width:900px){
+  :root{--px:28px;--cp:26px}
+  .hero{padding:52px 0 42px}
+  .su-img img{height:46px}
+  .csu-img img{height:40px}
+  .ylf-img img{height:34px}
+  .brand-main{font-size:1.1rem}
+  .brand-icon{width:38px;height:38px;font-size:1.1rem}
+  .logo-label{display:block}
+}
+@media(prefers-contrast:high){:root{--br:rgba(67,99,126,.4);--br-hi:rgba(67,99,126,.7)}}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .blob{display:none}
+}
+  </style>
+</head>
+<body>
+  <a href="#mainContent" class="skip-link">تخطَّ إلى المحتوى الرئيسي</a>
+ 
+  <!-- 2D Background -->
+  <div class="bg-base"></div>
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="scanlines"></div>
+ 
+  <!-- ░░ HEADER ░░ -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logos-bar">
+        <div class="org-logo-img su-img">
+          <img src="logo-su.png" alt="قادة مدارس الجمهورية" loading="eager" />
+          <span class="logo-label">قادة مدارس الجمهورية</span>
+        </div>
+        <div class="header-brand">
+          <div class="brand-icon">⚡</div>
+          <div class="brand-text">
+            <span class="brand-main">AI Teacher</span>
+            <span class="brand-sub">الانطلاقة الرقمية</span>
+          </div>
+        </div>
+        <div class="org-logo-img csu-img">
+          <img src="logo-csu.png" alt="اتحاد طلاب القاهرة" loading="eager" />
+          <span class="logo-label">اتحاد طلاب القاهرة</span>
+        </div>
+        <div class="org-logo-img ylf-img">
+          <img src="logo-ylf.png" alt="مؤسسة شباب القادة" loading="eager" />
+          <span class="logo-label">مؤسسة شباب القادة</span>
+        </div>
+      </div>
+      <nav class="header-nav">
+        <button class="nav-pill active" data-tab="ask"><span class="pill-icon">🎓</span><span>اسأل</span></button>
+        <button class="nav-pill" data-tab="planner"><span class="pill-icon">📅</span><span>جدولي</span></button>
+        <button class="nav-pill" data-tab="dashboard"><span class="pill-icon">🎛️</span><span>لوحتي</span></button>
+        <button class="nav-pill" data-tab="leaderboard"><span class="pill-icon">🏆</span><span>الصدارة</span></button>
+        <button class="nav-pill" data-tab="school"><span class="pill-icon">🏫</span><span>المدرسة</span></button>
+        <button class="nav-pill" data-tab="teacher"><span class="pill-icon">🧑‍🏫</span><span>معلم</span></button>
+        <button class="nav-pill" data-tab="parent"><span class="pill-icon">👨‍👩‍👧</span><span>ولي أمر</span></button>
+        <button class="nav-pill" data-tab="ministry"><span class="pill-icon">🏛️</span><span>الوزارة</span></button>
+        <button class="nav-pill" data-tab="lessons"><span class="pill-icon">📚</span><span>الدروس</span></button>
+        <button class="nav-pill nav-pill-soon" data-tab="pdf-soon"><span class="pill-icon">📄</span><span>PDF</span><span class="soon-dot"></span></button>
+        <button class="nav-pill" data-tab="about"><span class="pill-icon">🏆</span><span>المبادرة</span></button>
+        <button class="simple-toggle" id="simpleToggle" aria-pressed="false" title="وضع سهولة الوصول الشامل — خط أكبر، تباين أعلى، حركة أقل، وقراءة بصوت عالٍ"><span aria-hidden="true">♿</span><span class="simple-label">سهولة الوصول</span></button>
+        <button class="auth-btn" id="authLoggedOutBtn"><span>🔐</span><span class="auth-label">دخول</span></button>
+        <div class="auth-user-chip hidden" id="authUserChip">
+          <span class="auth-user-name" id="authUserName"></span>
+          <button class="auth-logout-btn" id="authLogoutBtn" title="تسجيل الخروج">🚪</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+ 
+  <!-- ░░ MAIN ░░ -->
+  <main class="main" id="mainContent">
+ 
+    <!-- TAB: ASK -->
+    <section class="tab-panel active" id="tab-ask">
+      <div class="hero">
+        <div class="hero-badge"><span class="badge-dot"></span>اتحاد طلاب مدارس محافظة القاهرة · CSU</div>
+        <h1 class="hero-title">مدرّسك الذكي <span class="gradient-text">بين إيديك</span></h1>
+        <p class="hero-desc">تعلّم أي مادة، في أي وقت، بأسلوب المعلم المصري الشاطر</p>
+        <div class="hero-stats">
+          <div class="stat"><span class="stat-num">10+</span><span class="stat-lbl">دروس</span></div>
+          <div class="stat-divider"></div>
+          <div class="stat"><span class="stat-num">12</span><span class="stat-lbl">صف دراسي</span></div>
+          <div class="stat-divider"></div>
+          <div class="stat"><span class="stat-num">27</span><span class="stat-lbl">محافظة</span></div>
+        </div>
+      </div>
+
+      <div class="streak-widget" id="streakWidget">
+        <div class="streak-flame" id="streakFlame">🔥</div>
+        <div class="streak-info">
+          <div class="streak-count"><span id="streakCount">0</span> يوم متتالي</div>
+          <div class="streak-sub">أفضل سلسلة: <span id="streakBest">0</span> يوم · <span id="streakPoints">0</span> نقطة</div>
+        </div>
+        <div class="streak-today" id="streakToday">اسأل سؤال النهاردة وابدأ سلسلتك</div>
+      </div>
+
+      <button class="voice-entry-btn" id="voiceEntryBtn">
+        <span class="voice-entry-icon">🎙️</span>
+        <div class="voice-entry-text">
+          <span class="voice-entry-title">اتكلم مع المعلم صوتيًا</span>
+          <span class="voice-entry-sub">اسأل، ناقش الدرس، أو تمرّن على الإنجليزية</span>
+        </div>
+        <span class="voice-entry-arrow">‹</span>
+      </button>
+ 
+      <div class="card lesson-card">
+        <div class="card-header">
+          <div class="card-icon-badge teal">📚</div>
+          <span class="card-label">اختر الدرس <em>(اختياري)</em></span>
+        </div>
+        <div class="selectors">
+          <div class="select-wrap">
+            <select id="gradeSelect" class="selector">
+              <option value="">الصف الدراسي</option>
+              <option value="1">الصف الأول الابتدائي</option><option value="2">الصف الثاني الابتدائي</option>
+              <option value="3">الصف الثالث الابتدائي</option><option value="4">الصف الرابع الابتدائي</option>
+              <option value="5">الصف الخامس الابتدائي</option><option value="6">الصف السادس الابتدائي</option>
+              <option value="7">الصف الأول الإعدادي</option><option value="8">الصف الثاني الإعدادي</option>
+              <option value="9">الصف الثالث الإعدادي</option><option value="10">الصف الأول الثانوي</option>
+              <option value="11">الصف الثاني الثانوي</option><option value="12">الصف الثالث الثانوي</option>
+            </select>
+            <span class="select-arrow">▾</span>
+          </div>
+          <div class="select-wrap">
+            <select id="subjectSelect" class="selector">
+              <option value="">المادة الدراسية</option>
+              <option value="math">رياضيات</option><option value="science">علوم</option>
+              <option value="arabic">لغة عربية</option><option value="english">لغة إنجليزية</option>
+              <option value="history">تاريخ</option><option value="geography">جغرافيا</option>
+              <option value="physics">فيزياء</option><option value="chemistry">كيمياء</option>
+              <option value="biology">أحياء</option>
+            </select>
+            <span class="select-arrow">▾</span>
+          </div>
+          <div class="select-wrap">
+            <select id="lessonSelect" class="selector">
+              <option value="">اختر الدرس</option>
+            </select>
+            <span class="select-arrow">▾</span>
+          </div>
+        </div>
+        <div id="lessonPreview" class="lesson-preview hidden"></div>
+      </div>
+ 
+      <div class="card question-card">
+        <div class="card-header">
+          <div class="card-icon-badge terra">💬</div>
+          <span class="card-label">سؤالك للمعلم الذكي</span>
+        </div>
+        <div class="textarea-wrap">
+          <textarea id="questionInput" class="question-input"
+            placeholder="اكتب سؤالك هنا أو ارفق صورة الواجب… مثلاً: شرح قانون نيوتن بطريقة سهلة" rows="4"></textarea>
+          <button class="voice-btn" id="voiceBtn" title="تحدّث بدلاً من الكتابة">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+              <line x1="12" y1="19" x2="12" y2="23"/>
+              <line x1="8" y1="23" x2="16" y2="23"/>
+            </svg>
+          </button>
+          <input type="file" id="imageInput" accept="image/png,image/jpeg,image/webp" hidden>
+        </div>
+        <button type="button" class="image-attach-prompt" id="imageAttachPrompt">
+          <span class="iap-icon">📎</span>
+          <span class="iap-text">اضغط هنا عشان ترفق صورة سؤال أو واجب</span>
+        </button>
+        <div class="image-preview hidden" id="imagePreview">
+          <img id="imagePreviewThumb" alt="معاينة الصورة المرفقة">
+          <div class="image-preview-info">
+            <span class="image-preview-label">🖼️ صورة مرفقة</span>
+            <span class="image-preview-hint">هيتم تحليلها مع سؤالك</span>
+          </div>
+          <button class="image-remove-btn" id="removeImageBtn" title="إزالة الصورة" aria-label="إزالة الصورة المرفقة">✕</button>
+        </div>
+        <div class="char-count" id="charCount">0 / 500</div>
+        <div class="action-buttons">
+          <button class="action-btn btn-explain" data-mode="explain" id="explainBtn">
+            <span class="btn-glow"></span>
+            <div class="btn-icon-wrap">🎓</div>
+            <span class="btn-text">اشرح</span>
+            <span class="btn-hint">شرح مبسّط</span>
+          </button>
+          <button class="action-btn btn-summarize" data-mode="summarize" id="summarizeBtn">
+            <span class="btn-glow"></span>
+            <div class="btn-icon-wrap">📝</div>
+            <span class="btn-text">لخّص</span>
+            <span class="btn-hint">نقاط سريعة</span>
+          </button>
+          <button class="action-btn btn-questions" data-mode="questions" id="questionsBtn">
+            <span class="btn-glow"></span>
+            <div class="btn-icon-wrap">❓</div>
+            <span class="btn-text">أسئلة</span>
+            <span class="btn-hint">اختبار</span>
+          </button>
+          <button class="action-btn btn-homework" data-mode="homework" id="homeworkBtn">
+            <span class="btn-glow"></span>
+            <div class="btn-icon-wrap">📸</div>
+            <span class="btn-text">حلّ الواجب</span>
+            <span class="btn-hint">من صورة</span>
+          </button>
+          <button class="action-btn btn-quiz" data-mode="quiz" id="quizBtn">
+            <span class="btn-glow"></span>
+            <div class="btn-icon-wrap">📝</div>
+            <span class="btn-text">اختبار تفاعلي</span>
+            <span class="btn-hint">جرّب نفسك</span>
+          </button>
+        </div>
+      </div>
+ 
+      <div class="card response-card" id="responseCard">
+        <div class="loading-state hidden" id="loadingState">
+          <div class="ai-spinner">
+            <div class="spin-center">🧠</div>
+            <div class="spin-ring spin-ring-1"></div>
+            <div class="spin-ring spin-ring-2"></div>
+            <div class="spin-ring spin-ring-3"></div>
+          </div>
+          <p class="loading-text" id="loadingText">المعلم الذكي يفكر…</p>
+        </div>
+        <div class="empty-state" id="emptyState">
+          <div class="empty-icon-wrap">🤖</div>
+          <p class="empty-title">جاهز للمساعدة!</p>
+          <p class="empty-sub">اكتب سؤالك واختار نوع الإجابة</p>
+          <div class="empty-chips">
+            <span class="empty-chip">🎤 صوت</span>
+            <span class="empty-chip">🔊 قراءة</span>
+            <span class="empty-chip">📋 نسخ</span>
+            <span class="empty-chip">🧩 مبسّط</span>
+          </div>
+        </div>
+        <div class="response-content hidden" id="responseContent">
+          <div class="response-header">
+            <div class="response-badge" id="responseBadge">شرح</div>
+            <div class="response-actions">
+              <button class="icon-btn" id="ttsBtn" title="استمع">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                  <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+                </svg>
+              </button>
+              <button class="icon-btn" id="copyBtn" title="نسخ">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="response-body" id="responseBody"></div>
+        </div>
+        <div class="error-state hidden" id="errorState">
+          <div class="error-icon">⚠️</div>
+          <p id="errorMsg">حدث خطأ، حاول مرة أخرى.</p>
+          <button class="retry-btn" id="retryBtn">إعادة المحاولة</button>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- TAB: LESSONS -->
+    <section class="tab-panel" id="tab-lessons">
+      <div class="hero">
+        <div class="hero-badge"><span class="badge-dot"></span>مكتبة الدروس</div>
+        <h1 class="hero-title">قاعدة <span class="gradient-text">الدروس</span></h1>
+        <p class="hero-desc">اضغط على أي درس للاستخدام الفوري</p>
+      </div>
+      <div class="lessons-grid" id="lessonsGrid"></div>
+    </section>
+
+    <!-- TAB: STUDY PLANNER -->
+    <section class="tab-panel" id="tab-planner">
+      <div class="hero">
+        <div class="hero-badge"><span class="badge-dot"></span>مساعد التنظيم الذكي</div>
+        <h1 class="hero-title">جدولك <span class="gradient-text">الدراسي</span></h1>
+        <p class="hero-desc">قولّي وقتك إزاي، والذكاء الاصطناعي يظبطلك جدول يناسب حياتك من غير ضغط</p>
+      </div>
+
+      <div class="card planner-card" id="plannerFormCard">
+        <div class="card-header">
+          <div class="card-icon-badge teal">📅</div>
+          <span class="card-label">جهّز جدولك</span>
+        </div>
+
+        <div class="planner-field">
+          <label class="planner-label">📌 أيام الأسبوع المتاحة للمذاكرة</label>
+          <div class="day-pills" id="dayPills">
+            <button type="button" class="day-pill" data-day="السبت">السبت</button>
+            <button type="button" class="day-pill" data-day="الأحد">الأحد</button>
+            <button type="button" class="day-pill" data-day="الاثنين">الاثنين</button>
+            <button type="button" class="day-pill" data-day="الثلاثاء">الثلاثاء</button>
+            <button type="button" class="day-pill" data-day="الأربعاء">الأربعاء</button>
+            <button type="button" class="day-pill" data-day="الخميس">الخميس</button>
+            <button type="button" class="day-pill" data-day="الجمعة">الجمعة</button>
+          </div>
+        </div>
+
+        <div class="planner-field">
+          <label class="planner-label">⏱️ كام ساعة تقريبًا تقدر تذاكر في اليوم؟</label>
+          <div class="select-wrap">
+            <select id="hoursPerDaySelect" class="selector">
+              <option value="1">ساعة واحدة</option>
+              <option value="2" selected>ساعتين</option>
+              <option value="3">3 ساعات</option>
+              <option value="4">4 ساعات</option>
+              <option value="5">5 ساعات</option>
+              <option value="6">6 ساعات فأكتر</option>
+            </select>
+            <span class="select-arrow">▾</span>
+          </div>
+        </div>
+
+        <div class="planner-field">
+          <label class="planner-label">📚 المواد اللي عايز تركّز عليها</label>
+          <div class="day-pills" id="subjectPills">
+            <button type="button" class="day-pill" data-subject="math">رياضيات</button>
+            <button type="button" class="day-pill" data-subject="science">علوم</button>
+            <button type="button" class="day-pill" data-subject="arabic">لغة عربية</button>
+            <button type="button" class="day-pill" data-subject="english">إنجليزية</button>
+            <button type="button" class="day-pill" data-subject="history">تاريخ</button>
+            <button type="button" class="day-pill" data-subject="geography">جغرافيا</button>
+            <button type="button" class="day-pill" data-subject="physics">فيزياء</button>
+            <button type="button" class="day-pill" data-subject="chemistry">كيمياء</button>
+            <button type="button" class="day-pill" data-subject="biology">أحياء</button>
+          </div>
+        </div>
+
+        <div class="planner-field">
+          <label class="planner-label">🎯 هدفك من الجدول ده</label>
+          <div class="day-pills goal-pills" id="goalPills">
+            <button type="button" class="day-pill goal-pill active" data-goal="general">مراجعة عامة مستمرة</button>
+            <button type="button" class="day-pill goal-pill" data-goal="exam">استعداد لامتحان قريب</button>
+            <button type="button" class="day-pill goal-pill" data-goal="subject">تقوية مادة معينة</button>
+          </div>
+        </div>
+
+        <div class="planner-field" id="examDateField" style="display:none">
+          <label class="planner-label">🗓️ تاريخ الامتحان (اختياري)</label>
+          <input type="date" id="examDateInput" class="selector planner-date-input">
+        </div>
+
+        <button class="planner-generate-btn" id="generatePlanBtn">
+          <span>✨ ولّد جدولي الدراسي</span>
+        </button>
+        <p class="planner-hint" id="plannerHint">اختار يوم واحد على الأقل ومادة واحدة على الأقل</p>
+      </div>
+
+      <div class="card planner-result-card hidden" id="plannerResultCard">
+        <div class="card-header">
+          <div class="card-icon-badge teal">🗂️</div>
+          <span class="card-label">جدولك الأسبوعي</span>
+          <button class="planner-regenerate-btn" id="regeneratePlanBtn">🔄 عدّل الجدول</button>
+        </div>
+        <div id="plannerLoadingState" class="loading-state hidden">
+          <div class="ai-spinner">
+            <div class="spin-ring spin-ring-1"></div>
+            <div class="spin-ring spin-ring-2"></div>
+            <div class="spin-ring spin-ring-3"></div>
+            <div class="spin-center">📅</div>
+          </div>
+          <p class="loading-text">بيظبطلك جدول يناسب وقتك…</p>
+        </div>
+        <div id="plannerSummary" class="planner-summary"></div>
+        <div id="plannerWeekGrid" class="planner-week-grid"></div>
+        <div id="plannerTips" class="planner-tips"></div>
+      </div>
+    </section>
+
+    <!-- TAB: STUDENT DASHBOARD -->
+    <section class="tab-panel" id="tab-dashboard">
+      <div class="hero">
+        <div class="hero-badge"><span class="badge-dot"></span>مساحتك الشخصية</div>
+        <h1 class="hero-title">لوحة <span class="gradient-text">تحكمك</span></h1>
+        <p class="hero-desc">كل حاجة خاصة بيك في مكان واحد</p>
+      </div>
+
+      <div class="card dashboard-login-cta" id="dashboardLoginCta">
+        <div class="dlc-icon">🔐</div>
+        <h3 class="dlc-title">سجّل دخول عشان تشوف لوحتك</h3>
+        <p class="dlc-desc">تقدر تتابع سلسلة استمراريتك، جدولك الدراسي، وآخر أسئلتك من أي جهاز</p>
+        <button class="planner-generate-btn dlc-btn" id="dashboardLoginBtn">تسجيل الدخول / حساب جديد</button>
+      </div>
+
+      <div class="dashboard-content hidden" id="dashboardContent">
+        <div class="dashboard-welcome" id="dashboardWelcome"></div>
+
+        <div class="dashboard-stats-grid">
+          <div class="dstat-card">
+            <div class="dstat-icon">🔥</div>
+            <div class="dstat-num" id="dashStreakNum">0</div>
+            <div class="dstat-label">يوم متتالي</div>
+          </div>
+          <div class="dstat-card">
+            <div class="dstat-icon">🏆</div>
+            <div class="dstat-num" id="dashBestNum">0</div>
+            <div class="dstat-label">أفضل سلسلة</div>
+          </div>
+          <div class="dstat-card">
+            <div class="dstat-icon">⭐</div>
+            <div class="dstat-num" id="dashPointsNum">0</div>
+            <div class="dstat-label">نقطة</div>
+          </div>
+          <div class="dstat-card">
+            <div class="dstat-icon">📝</div>
+            <div class="dstat-num" id="dashActivityNum">0</div>
+            <div class="dstat-label">نشاط حديث</div>
+          </div>
+        </div>
+
+        <div class="card dashboard-section-card hidden" id="dashParentRequestsCard">
+          <div class="card-header">
+            <div class="card-icon-badge teal">👨‍👩‍👧</div>
+            <span class="card-label">طلبات متابعة من أولياء الأمور</span>
+          </div>
+          <div id="dashParentRequestsList" class="school-people-list"></div>
+        </div>
+
+        <div class="card dashboard-section-card">
+          <div class="card-header">
+            <div class="card-icon-badge teal">📅</div>
+            <span class="card-label">جدولك الدراسي</span>
+            <button class="planner-regenerate-btn" id="dashGoToPlannerBtn">فتح الجدول ⟵</button>
+          </div>
+          <div id="dashPlanPreview" class="dash-plan-preview"></div>
+        </div>
+
+        <div class="card dashboard-section-card">
+          <div class="card-header">
+            <div class="card-icon-badge teal">📋</div>
+            <span class="card-label">آخر أنشطتك</span>
+          </div>
+          <div id="dashActivityList" class="dash-activity-list"></div>
+        </div>
+
+        <div class="card dashboard-section-card">
+          <div class="card-header">
+            <div class="card-icon-badge teal">🏅</div>
+            <span class="card-label">الأوسمة</span>
+            <span class="badges-count-chip" id="dashBadgesCount">0/0</span>
+          </div>
+          <div id="dashBadgesGrid" class="badges-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB: LEADERBOARD -->
+    <section class="tab-panel" id="tab-leaderboard">
+      <div class="hero">
+        <div class="hero-badge"><span class="badge-dot"></span>منافسة ودّية</div>
+        <h1 class="hero-title">لوحة <span class="gradient-text">الصدارة</span></h1>
+        <p class="hero-desc">شوف ترتيبك بين زمايلك</p>
+      </div>
+
+      <div class="card dashboard-login-cta" id="leaderboardLoginCta">
+        <div class="dlc-icon">🔐</div>
+        <h3 class="dlc-title">سجّل دخول عشان تشوف ترتيبك</h3>
+        <p class="dlc-desc">وتقدر تتنافس مع زمايلك على النقاط</p>
+        <button class="planner-generate-btn dlc-btn" id="leaderboardLoginBtn">تسجيل الدخول / حساب جديد</button>
+      </div>
+
+      <div class="dashboard-content hidden" id="leaderboardContent">
+        <div class="leaderboard-scope-toggle">
+          <button class="voice-lang-btn active" data-scope="global" id="lbScopeGlobal">🌍 عام</button>
+          <button class="voice-lang-btn" data-scope="school" id="lbScopeSchool">🏫 مدرستي</button>
+        </div>
+
+        <div class="card my-rank-card hidden" id="myRankCard">
+          <span class="my-rank-num" id="myRankNum">#-</span>
+          <div class="my-rank-info">
+            <div class="my-rank-title">ترتيبك</div>
+            <div class="my-rank-points" id="myRankPoints">0 نقطة</div>
+          </div>
+        </div>
+
+        <div class="card dashboard-section-card">
+          <div id="leaderboardList" class="leaderboard-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB: SCHOOL DASHBOARD -->
+    <section class="tab-panel" id="tab-school">
+      <div class="hero">
+        <div class="hero-badge"><span class="badge-dot"></span>لمسؤولي المدارس</div>
+        <h1 class="hero-title">لوحة <span class="gradient-text">المدرسة</span></h1>
+        <p class="hero-desc">تابع معلميك وطلابك في مكان واحد</p>
+      </div>
+
+      <div class="card dashboard-login-cta" id="schoolLoginCta">
+        <div class="dlc-icon">🔐</div>
+        <h3 class="dlc-title">سجّل دخول عشان تشوف لوحة مدرستك</h3>
+        <p class="dlc-desc">اللوحة دي متاحة لحسابات "مسؤول مدرسة" بس</p>
+        <button class="planner-generate-btn dlc-btn" id="schoolLoginBtn">تسجيل الدخول / حساب جديد</button>
+      </div>
+
+      <div class="card dashboard-login-cta hidden" id="schoolWrongRoleCta">
+        <div class="dlc-icon">🚫</div>
+        <h3 class="dlc-title">اللوحة دي لمسؤولي المدارس بس</h3>
+        <p class="dlc-desc">حسابك الحالي مش من نوع "مسؤول مدرسة"، فمعندكش صلاحية توصل للوحة دي</p>
+      </div>
+
+      <div class="dashboard-content hidden" id="schoolContent">
+        <div class="dashboard-welcome" id="schoolWelcome"></div>
+
+        <div class="dashboard-stats-grid">
+          <div class="dstat-card">
+            <div class="dstat-icon">🧑‍🏫</div>
+            <div class="dstat-num" id="schoolTeachersNum">0</div>
+            <div class="dstat-label">معلم</div>
+          </div>
+          <div class="dstat-card">
+            <div class="dstat-icon">🎓</div>
+            <div class="dstat-num" id="schoolStudentsNum">0</div>
+            <div class="dstat-label">طالب</div>
+          </div>
+          <div class="dstat-card">
+            <div class="dstat-icon">✅</div>
+            <div class="dstat-num" id="schoolActiveNum">0</div>
+            <div class="dstat-label">نشط النهاردة</div>
+          </div>
+          <div class="dstat-card">
+            <div class="dstat-icon">🔥</div>
+            <div class="dstat-num" id="schoolAvgStreakNum">0</div>
+            <div class="dstat-label">متوسط السلسلة</div>
+          </div>
+        </div>
+
+        <div class="card dashboard-section-card">
+          <div class="card-header">
+            <div class="card-icon-badge teal">🧑‍🏫</div>
+            <span class="card-label">المعلمون</span>
+          </div>
+          <div id="schoolTeachersList" class="school-people-list"></div>
+        </div>
+
+        <div class="card dashboard-section-card">
+          <div class="card-header">
+            <div class="card-icon-badge teal">🎓</div>
+            <span class="card-label">الطلاب</span>
+          </div>
+          <div id="schoolStudentsList" class="school-people-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB: TEACHER DASHBOARD -->
+    <section class="tab-panel" id="tab-teacher">
+      <div class="hero">
+        <div class="hero-badge"><span class="badge-dot"></span>لمعلمي المدرسة</div>
+        <h1 class="hero-title">لوحة <span class="gradient-text">المعلم</span></h1>
+        <p class="hero-desc">تابع مستوى ونشاط طلاب مدرستك</p>
+      </div>
+
+      <div class="card dashboard-login-cta" id="teacherLoginCta">
+        <div class="dlc-icon">🔐</div>
+        <h3 class="dlc-title">سجّل دخول عشان تشوف لوحتك</h3>
+        <p class="dlc-desc">اللوحة دي متاحة لحسابات "معلم" بس</p>
+        <button class="planner-generate-btn dlc-btn" id="teacherLoginBtn">تسجيل الدخول / حساب جديد</button>
+      </div>
+
+      <div class="card dashboard-login-cta hidden" id="teacherWrongRoleCta">
+        <div class="dlc-icon">🚫</div>
+        <h3 class="dlc-title">اللوحة دي لحسابات المعلمين بس</h3>
+        <p class="dlc-desc">حسابك الحالي مش من نوع "معلم"</p>
+      </div>
+
+      <div class="card dashboard-login-cta hidden" id="teacherNoSchoolCta">
+        <div class="dlc-icon">🏫</div>
+        <h3 class="dlc-title">حسابك مش مرتبط بمدرسة</h3>
+        <p class="dlc-desc">لازم تختار مدرستك وقت التسجيل عشان تقدر تشوف طلابها هنا. لو مش لاقي مدرستك في القائمة، اطلب من مسؤول المدرسة يعمل حساب "مسؤول مدرسة" الأول</p>
+      </div>
+
+      <div class="dashboard-content hidden" id="teacherContent">
+        <div class="dashboard-welcome" id="teacherWelcome"></div>
+
+        <div class="dashboard-stats-grid">
+          <div class="dstat-card">
+            <div class="dstat-icon">🎓</div>
+            <div class="dstat-num" id="teacherStudentsNum">0</div>
+            <div class="dstat-label">طالب</div>
+          </div>
+          <div class="dstat-card">
+            <div class="dstat-icon">✅</div>
+            <div class="dstat-num" id="teacherActiveWeekNum">0</div>
+            <div class="dstat-label">نشط الأسبوع ده</div>
+          </div>
+          <div class="dstat-card">
+            <div class="dstat-icon">⭐</div>
+            <div class="dstat-num" id="teacherAvgPointsNum">0</div>
+            <div class="dstat-label">متوسط النقاط</div>
+          </div>
+          <div class="dstat-card">
+            <div class="dstat-icon">📸</div>
+            <div class="dstat-num" id="teacherHomeworkNum">0</div>
+            <div class="dstat-label">واجب اتحل</div>
+          </div>
+        </div>
+
+        <div class="card dashboard-section-card" id="teacherAttentionCard">
+          <div class="card-header">
+            <div class="card-icon-badge teal">⚠️</div>
+            <span class="card-label">محتاجين متابعة</span>
+          </div>
+          <p class="teacher-attention-hint">طلاب مفيهمش نشاط من 7 أيام فأكتر</p>
+          <div id="teacherAttentionList" class="school-people-list"></div>
+        </div>
+
+        <div class="card dashboard-section-card">
+          <div class="card-header">
+            <div class="card-icon-badge teal">🎓</div>
+            <span class="card-label">كل الطلاب</span>
+            <div class="select-wrap teacher-grade-filter-wrap">
+              <select id="teacherGradeFilter" class="selector">
+                <option value="">كل الصفوف</option>
+              </select>
+              <span class="select-arrow">▾</span>
+            </div>
+          </div>
+          <div id="teacherStudentsList" class="school-people-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB: PARENT DASHBOARD -->
+    <section class="tab-panel" id="tab-parent">
+      <div class="hero">
+        <div class="hero-badge"><span class="badge-dot"></span>لأولياء الأمور</div>
+        <h1 class="hero-title">لوحة <span class="gradient-text">ولي الأمر</span></h1>
+        <p class="hero-desc">تابع مستوى ابنك أو بنتك لحظة بلحظة</p>
+      </div>
+
+      <div class="card dashboard-login-cta" id="parentLoginCta">
+        <div class="dlc-icon">🔐</div>
+        <h3 class="dlc-title">سجّل دخول عشان تتابع ابنك</h3>
+        <p class="dlc-desc">اللوحة دي متاحة لحسابات "ولي أمر" بس</p>
+        <button class="planner-generate-btn dlc-btn" id="parentLoginBtn">تسجيل الدخول / حساب جديد</button>
+      </div>
+
+      <div class="card dashboard-login-cta hidden" id="parentWrongRoleCta">
+        <div class="dlc-icon">🚫</div>
+        <h3 class="dlc-title">اللوحة دي لحسابات أولياء الأمور بس</h3>
+        <p class="dlc-desc">حسابك الحالي مش من نوع "ولي أمر"</p>
+      </div>
+
+      <div class="dashboard-content hidden" id="parentContent">
+        <div class="card planner-card">
+          <div class="card-header">
+            <div class="card-icon-badge teal">➕</div>
+            <span class="card-label">اربط حساب ابنك/بنتك</span>
+          </div>
+          <p class="parent-add-hint">هيوصل لابنك/بنتك طلب موافقة، وبعد ما يوافق هتقدر تشوف نشاطه هنا</p>
+          <div class="parent-add-row">
+            <input type="email" id="parentChildEmail" class="planner-date-input" placeholder="📧 البريد الإلكتروني بتاع حساب الطالب">
+            <button class="planner-generate-btn parent-add-btn" id="parentAddChildBtn">إرسال طلب</button>
+          </div>
+          <p class="auth-error hidden" id="parentAddError"></p>
+        </div>
+
+        <div class="card dashboard-section-card" id="parentPendingCard">
+          <div class="card-header">
+            <div class="card-icon-badge teal">⏳</div>
+            <span class="card-label">طلبات في الانتظار</span>
+          </div>
+          <div id="parentPendingList" class="school-people-list"></div>
+        </div>
+
+        <div id="parentChildrenWrap"></div>
+      </div>
+    </section>
+
+    <!-- TAB: MINISTRY DASHBOARD -->
+    <section class="tab-panel" id="tab-ministry">
+      <div class="hero">
+        <div class="hero-badge"><span class="badge-dot"></span>وزارة التربية والتعليم</div>
+        <h1 class="hero-title">لوحة <span class="gradient-text">الوزارة</span></h1>
+        <p class="hero-desc">نظرة عامة على مستوى الدولة، كل المدارس مع بعض</p>
+      </div>
+
+      <div class="card dashboard-login-cta" id="ministryLoginCta">
+        <div class="dlc-icon">🔐</div>
+        <h3 class="dlc-title">سجّل دخول للوصول للوحة</h3>
+        <p class="dlc-desc">اللوحة دي متاحة لحسابات "الوزارة" بس</p>
+        <button class="planner-generate-btn dlc-btn" id="ministryLoginBtn">تسجيل الدخول / حساب جديد</button>
+      </div>
+
+      <div class="card dashboard-login-cta hidden" id="ministryWrongRoleCta">
+        <div class="dlc-icon">🚫</div>
+        <h3 class="dlc-title">اللوحة دي لحسابات الوزارة بس</h3>
+        <p class="dlc-desc">حسابك الحالي مش من نوع "وزارة التربية والتعليم"</p>
+      </div>
+
+      <div class="dashboard-content hidden" id="ministryContent">
+        <div class="dashboard-stats-grid">
+          <div class="dstat-card">
+            <div class="dstat-icon">🏫</div>
+            <div class="dstat-num" id="ministrySchoolsNum">0</div>
+            <div class="dstat-label">مدرسة</div>
+          </div>
+          <div class="dstat-card">
+            <div class="dstat-icon">🎓</div>
+            <div class="dstat-num" id="ministryStudentsNum">0</div>
+            <div class="dstat-label">طالب</div>
+          </div>
+          <div class="dstat-card">
+            <div class="dstat-icon">🧑‍🏫</div>
+            <div class="dstat-num" id="ministryTeachersNum">0</div>
+            <div class="dstat-label">معلم</div>
+          </div>
+          <div class="dstat-card">
+            <div class="dstat-icon">✅</div>
+            <div class="dstat-num" id="ministryActiveNum">0</div>
+            <div class="dstat-label">نشط النهاردة</div>
+          </div>
+        </div>
+
+        <div class="card dashboard-section-card">
+          <div class="card-header">
+            <div class="card-icon-badge teal">📊</div>
+            <span class="card-label">توزيع الطلاب على الصفوف</span>
+          </div>
+          <div id="ministryGradeChart" class="ministry-grade-chart"></div>
+        </div>
+
+        <div class="card dashboard-section-card">
+          <div class="card-header">
+            <div class="card-icon-badge teal">🏫</div>
+            <span class="card-label">مقارنة المدارس</span>
+          </div>
+          <div id="ministrySchoolsTable" class="ministry-schools-table"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB: PDF + VIRTUAL MEETING (COMING SOON) -->
+    <section class="tab-panel" id="tab-pdf-soon">
+      <div class="soon-page">
+        <div class="soon-badge-top">🚧 قريبًا / Coming Soon</div>
+        <div class="soon-icon-stack">
+          <span class="soon-icon-main">📄</span>
+          <span class="soon-icon-orbit">🎙️</span>
+        </div>
+        <h1 class="soon-title">الشرح التفاعلي للملفات <span class="gradient-text">واجتماعات الذكاء الاصطناعي</span></h1>
+        <p class="soon-desc">ارفع أي PDF أو كتاب دراسي، والذكاء الاصطناعي يتدرّب عليه، يديك ملخص ذكي، ويولّد اختبارات منه. وبعدها تقدر تدخل "غرفة اجتماع" افتراضية يتكلم فيها المعلم الذكي معاك صوتيًا عن محتوى الملف — تقاطعه، تطلب إعادة شرح، أو تدخل اختبار فوري لحظة بلحظة.</p>
+
+        <div class="soon-features-grid">
+          <div class="soon-feature-card">
+            <div class="soon-feature-icon">📤</div>
+            <div class="soon-feature-title">رفع أي ملف</div>
+            <div class="soon-feature-sub">PDF أو كتاب دراسي كامل</div>
+          </div>
+          <div class="soon-feature-card">
+            <div class="soon-feature-icon">🧠</div>
+            <div class="soon-feature-title">ملخصات واختبارات</div>
+            <div class="soon-feature-sub">يتولّد أوتوماتيك من محتوى الملف</div>
+          </div>
+          <div class="soon-feature-card">
+            <div class="soon-feature-icon">🗣️</div>
+            <div class="soon-feature-title">غرفة اجتماع صوتية</div>
+            <div class="soon-feature-sub">اتكلم، قاطع، واطلب إعادة شرح</div>
+          </div>
+        </div>
+
+        <div class="soon-cta-card">
+          <p class="soon-cta-text" id="soonCtaText">كام طالب مهتم بالميزة دي؟</p>
+          <p class="soon-cta-count"><span id="soonInterestCount">0</span> طالب سجّل اهتمامه لحد دلوقتي</p>
+          <button class="planner-generate-btn soon-notify-btn" id="soonNotifyBtn">🔔 أعلمني لما تتاح</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB: ABOUT -->
+    <section class="tab-panel" id="tab-about">
+      <div class="hero">
+        <div class="hero-badge"><span class="badge-dot"></span>مبادرة الجمهورية</div>
+        <h1 class="hero-title">الانطلاقة <span class="gradient-text">الرقمية</span></h1>
+      </div>
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="about-icon-wrap">🏆</div>
+          <h3>قادة مدارس الجمهورية</h3>
+          <p>برنامج وطني يجمع أفضل قادة اتحادات طلاب المدارس من 27 محافظة في منافسة على مستوى الجمهورية</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon-wrap">🚀</div>
+          <h3>مبادرة الانطلاقة الرقمية</h3>
+          <p>مبادرة اللجنة العلمية لاتحاد طلاب مدارس محافظة القاهرة لتسهيل المناهج بالذكاء الاصطناعي</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon-wrap">🤖</div>
+          <h3>AI Teacher Hub</h3>
+          <p>منصة تعليمية ذكية تستخدم أحدث نماذج الذكاء الاصطناعي لتقديم شرح مبسّط لجميع المواد الدراسية</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon-wrap">🌟</div>
+          <h3>مؤسسة شباب القادة YLF</h3>
+          <p>الراعي الرسمي للبرنامج — تهدف لبناء جيل قيادي قادر على التغيير وصنع المستقبل</p>
+        </div>
+      </div>
+      <div class="initiative-banner">
+        <div class="banner-logos">
+          <div class="b-logo"><img class="b-logo-img" src="logo-su.png" alt="SU"/><small>قادة مدارس الجمهورية</small></div>
+          <span class="banner-x">×</span>
+          <div class="b-logo"><img class="b-logo-img" src="logo-csu.png" alt="CSU"/><small>اتحاد طلاب القاهرة</small></div>
+          <span class="banner-x">×</span>
+          <div class="b-logo"><img class="b-logo-img" src="logo-ylf.png" alt="YLF"/><small>مؤسسة شباب القادة</small></div>
+        </div>
+        <p class="banner-tagline">معًا نصنع التغيير الرقمي في التعليم المصري 🇪🇬</p>
+      </div>
+    </section>
+ 
+  </main>
+ 
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p class="footer-partners-label">بالشراكة مع</p>
+    <div class="footer-logos">
+      <div class="footer-logo-card"><img src="logo-su.png" alt="قادة مدارس الجمهورية"/><span>قادة مدارس الجمهورية</span></div>
+      <div class="footer-logo-card"><img src="logo-csu.png" alt="اتحاد طلاب مدارس القاهرة"/><span>اتحاد طلاب مدارس القاهرة</span></div>
+      <div class="footer-logo-card"><img src="logo-ylf.png" alt="مؤسسة شباب القادة"/><span>مؤسسة شباب القادة</span></div>
+    </div>
+    <p class="footer-credit">مبادرة الانطلاقة الرقمية — <strong>اتحاد طلاب مدارس محافظة القاهرة</strong> برعاية <strong>مؤسسة شباب القادة (YLF)</strong></p>
+  </footer>
+ 
+  <div class="a11y-panel-overlay hidden" id="a11yPanelOverlay">
+  <div class="a11y-panel" id="a11yPanel" role="dialog" aria-modal="true" aria-label="لوحة سهولة الوصول">
+    <div class="a11y-panel-header">
+      <span class="a11y-panel-title">♿ سهولة الوصول</span>
+      <button class="a11y-panel-close" id="a11yPanelClose" title="إغلاق اللوحة" aria-label="إغلاق لوحة سهولة الوصول">✕</button>
+    </div>
+    <div class="a11y-panel-row a11y-panel-master">
+      <span class="a11y-panel-label">✅ تفعيل وضع سهولة الوصول الشامل</span>
+      <button class="a11y-panel-switch" id="a11yMasterToggle" role="switch" aria-checked="false"><span class="a11y-switch-dot"></span></button>
+    </div>
+    <div class="a11y-panel-divider"></div>
+    <div class="a11y-panel-row a11y-panel-read">
+      <span class="a11y-panel-label">🔊 قراءة الصفحة بصوت عالٍ</span>
+      <div class="a11y-panel-btns">
+        <button id="a11yReadBtn" title="اقرأ محتوى الصفحة الحالية" aria-label="ابدأ قراءة الصفحة بصوت عالٍ">▶️</button>
+        <button id="a11yStopBtn" title="إيقاف القراءة" aria-label="إيقاف القراءة الصوتية">⏹️</button>
+      </div>
+    </div>
+    <div class="a11y-voice-diag" id="a11yVoiceDiag">
+      <button class="a11y-voice-check-btn" id="a11yVoiceCheckBtn">🔍 فحص الصوت العربي المتاح على جهازك</button>
+      <p class="a11y-voice-diag-result hidden" id="a11yVoiceDiagResult"></p>
+      <div class="select-wrap hidden" id="a11yVoicePickerWrap">
+        <select id="a11yVoicePicker" class="selector"></select>
+        <span class="select-arrow">▾</span>
+      </div>
+    </div>
+    <div class="a11y-panel-row">
+      <span class="a11y-panel-label">🔤 حجم الخط</span>
+      <div class="a11y-panel-btns">
+        <button id="a11yFontDown" title="تصغير الخط">A-</button>
+        <button id="a11yFontReset" title="الحجم الافتراضي">A</button>
+        <button id="a11yFontUp" title="تكبير الخط">A+</button>
+      </div>
+    </div>
+    <div class="a11y-panel-row">
+      <span class="a11y-panel-label">🐢 سرعة القراءة الصوتية</span>
+      <div class="a11y-panel-btns">
+        <button id="a11ySpeedSlow" title="بطيء">بطيء</button>
+        <button id="a11ySpeedNormal" title="عادي" class="active">عادي</button>
+        <button id="a11ySpeedFast" title="سريع">سريع</button>
+      </div>
+    </div>
+    <div class="a11y-panel-divider"></div>
+    <div class="a11y-panel-row">
+      <span class="a11y-panel-label">📖 خط سهل لعسر القراءة</span>
+      <button class="a11y-panel-switch" id="a11yDyslexiaToggle" role="switch" aria-checked="false"><span class="a11y-switch-dot"></span></button>
+    </div>
+    <div class="a11y-panel-row">
+      <span class="a11y-panel-label">⚫ تدرج رمادي (حساسية الألوان)</span>
+      <button class="a11y-panel-switch" id="a11yGrayscaleToggle" role="switch" aria-checked="false"><span class="a11y-switch-dot"></span></button>
+    </div>
+    <div class="a11y-panel-row">
+      <span class="a11y-panel-label">🖱️ مؤشر أكبر</span>
+      <button class="a11y-panel-switch" id="a11yCursorToggle" role="switch" aria-checked="false"><span class="a11y-switch-dot"></span></button>
+    </div>
+    <div class="a11y-panel-row">
+      <span class="a11y-panel-label">🪟 إلغاء الشفافية والضبابية</span>
+      <button class="a11y-panel-switch" id="a11yOpaqueToggle" role="switch" aria-checked="false"><span class="a11y-switch-dot"></span></button>
+    </div>
+    <div class="a11y-panel-row">
+      <span class="a11y-panel-label">📏 مسطرة تتبّع القراءة</span>
+      <button class="a11y-panel-switch" id="a11yRulerToggle" role="switch" aria-checked="false"><span class="a11y-switch-dot"></span></button>
+    </div>
+    <div class="a11y-panel-row">
+      <span class="a11y-panel-label">🔗 تسطير الروابط والأزرار</span>
+      <button class="a11y-panel-switch" id="a11yUnderlineToggle" role="switch" aria-checked="false"><span class="a11y-switch-dot"></span></button>
+    </div>
+    <div class="a11y-panel-row">
+      <span class="a11y-panel-label">🗣️ قراءة ردود المعلم تلقائيًا</span>
+      <button class="a11y-panel-switch" id="a11yAutoReadToggle" role="switch" aria-checked="false"><span class="a11y-switch-dot"></span></button>
+    </div>
+    <div class="a11y-panel-divider"></div>
+    <div class="a11y-switch-scan-box">
+      <div class="a11y-panel-row">
+        <span class="a11y-panel-label">🔘 وضع المسح بمفتاح واحد</span>
+        <button class="a11y-panel-switch" id="a11ySwitchScanToggle" role="switch" aria-checked="false"><span class="a11y-switch-dot"></span></button>
+      </div>
+      <p class="a11y-switch-scan-hint">لذوي الإعاقة الحركية الشديدة اللي مقدرش يستخدم ماوس أو كيبورد عادي — الموقع بيضيء العناصر أوتوماتيك واحد واحد، ودوس <strong>مسافة (Space)</strong> أو انقر أي حتة في الشاشة لاختيار اللي مضيء.</p>
+      <div class="a11y-panel-row">
+        <span class="a11y-panel-label">سرعة المسح</span>
+        <div class="a11y-panel-btns">
+          <button id="a11yScanSlow" title="بطيء">بطيء</button>
+          <button id="a11yScanNormal" title="عادي" class="active">عادي</button>
+          <button id="a11yScanFast" title="سريع">سريع</button>
+        </div>
+      </div>
+    </div>
+    <div class="a11y-panel-divider"></div>
+    <button class="a11y-panel-reset-all" id="a11yResetAll">↺ إعادة ضبط كل الإعدادات</button>
+  </div>
+  </div>
+  <div class="a11y-reading-ruler hidden" id="a11yReadingRuler"></div>
+  <div class="a11y-switch-scan-indicator hidden" id="a11ySwitchScanIndicator">
+    🔘 وضع المسح شغّال — دوس <kbd>مسافة</kbd> أو انقر في أي مكان للاختيار
+    <button id="a11ySwitchScanStop">إيقاف</button>
+  </div>
+
+  <div class="toast" id="toast"></div>
+ 
+  <div class="simple-overlay hidden" id="simpleOverlay">
+    <div class="simple-card">
+      <div class="simple-header">
+        <span>🧩 الوضع المبسّط</span>
+        <button class="simple-close" id="simpleClose" aria-label="إغلاق الوضع المبسّط">✕</button>
+      </div>
+      <div class="simple-content" id="simpleContent"></div>
+      <button class="simple-tts-btn" id="simpleTtsBtn">🔊 استمع للإجابة</button>
+    </div>
+  </div>
+
+  <div class="streak-celebrate-overlay hidden" id="streakCelebrateOverlay">
+    <div class="streak-celebrate-card">
+      <div class="streak-celebrate-emoji" id="streakCelebrateEmoji">🔥</div>
+      <div class="streak-celebrate-title" id="streakCelebrateTitle">سلسلة 3 أيام!</div>
+      <div class="streak-celebrate-desc" id="streakCelebrateDesc">استمر كده، الاستمرارية هي سر التفوق</div>
+      <button class="streak-celebrate-btn" id="streakCelebrateClose">تمام، كمّل مذاكرة 💪</button>
+    </div>
+  </div>
+
+  <div class="auth-overlay hidden" id="authOverlay">
+    <div class="auth-card">
+      <button class="auth-close" id="authClose" aria-label="إغلاق نافذة تسجيل الدخول">✕</button>
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="authTabLogin" data-authtab="login">تسجيل الدخول</button>
+        <button class="auth-tab" id="authTabRegister" data-authtab="register">حساب جديد</button>
+      </div>
+
+      <form class="auth-form" id="loginForm">
+        <input type="email" id="loginEmail" class="planner-date-input" placeholder="📧 البريد الإلكتروني" required autocomplete="username">
+        <input type="password" id="loginPassword" class="planner-date-input" placeholder="🔒 كلمة السر" required autocomplete="current-password">
+        <button type="submit" class="planner-generate-btn">دخول</button>
+        <p class="auth-error hidden" id="loginError"></p>
+      </form>
+
+      <form class="auth-form hidden" id="registerForm">
+        <input type="text" id="regName" class="planner-date-input" placeholder="👤 الاسم كامل" required autocomplete="name">
+        <input type="email" id="regEmail" class="planner-date-input" placeholder="📧 البريد الإلكتروني" required autocomplete="username">
+        <input type="password" id="regPassword" class="planner-date-input" placeholder="🔒 كلمة السر (6 حروف على الأقل)" required autocomplete="new-password">
+        <div class="select-wrap">
+          <select id="regRole" class="selector">
+            <option value="student">🎓 طالب</option>
+            <option value="parent">👨‍👩‍👧 ولي أمر</option>
+            <option value="teacher">🧑‍🏫 معلم</option>
+            <option value="school_admin">🏫 مسؤول مدرسة</option>
+            <option value="tutoring_company">🏢 شركة دروس خصوصية</option>
+            <option value="ministry">🏛️ وزارة التربية والتعليم</option>
+          </select>
+          <span class="select-arrow">▾</span>
+        </div>
+        <div class="select-wrap" id="regGradeWrap">
+          <select id="regGrade" class="selector">
+            <option value="">الصف الدراسي</option>
+            <option value="1">الصف الأول الابتدائي</option><option value="2">الصف الثاني الابتدائي</option>
+            <option value="3">الصف الثالث الابتدائي</option><option value="4">الصف الرابع الابتدائي</option>
+            <option value="5">الصف الخامس الابتدائي</option><option value="6">الصف السادس الابتدائي</option>
+            <option value="7">الصف الأول الإعدادي</option><option value="8">الصف الثاني الإعدادي</option>
+            <option value="9">الصف الثالث الإعدادي</option><option value="10">الصف الأول الثانوي</option>
+            <option value="11">الصف الثاني الثانوي</option><option value="12">الصف الثالث الثانوي</option>
+          </select>
+          <span class="select-arrow">▾</span>
+        </div>
+        <input type="text" id="regSchoolName" class="planner-date-input hidden" placeholder="🏫 اسم المدرسة كامل">
+        <div class="select-wrap hidden" id="regSchoolSelectWrap">
+          <select id="regSchoolSelect" class="selector">
+            <option value="">مدرستك (اختياري)</option>
+          </select>
+          <span class="select-arrow">▾</span>
+        </div>
+        <button type="submit" class="planner-generate-btn">إنشاء الحساب</button>
+        <p class="auth-error hidden" id="registerError"></p>
+      </form>
+    </div>
+  </div>
+
+  <div class="voice-overlay hidden" id="voiceOverlay">
+    <div class="voice-card">
+      <div class="voice-header">
+        <span class="voice-header-title">🎙️ المحادثة الصوتية</span>
+        <div class="voice-lang-toggle" id="voiceLangToggle">
+          <button class="voice-lang-btn active" data-lang="ar" type="button">🇪🇬 عربي</button>
+          <button class="voice-lang-btn" data-lang="en" type="button">🇬🇧 EN</button>
+        </div>
+        <button class="voice-close" id="voiceClose" type="button" aria-label="إغلاق المحادثة الصوتية">✕</button>
+      </div>
+      <div class="voice-messages" id="voiceMessages">
+        <p class="voice-empty-hint" id="voiceEmptyHint">اضغط على الميكروفون وابدأ الكلام 🎤</p>
+      </div>
+      <div class="voice-controls">
+        <button class="voice-reset-btn" id="voiceResetBtn" type="button" title="محادثة جديدة" aria-label="بدء محادثة صوتية جديدة">🔄</button>
+        <button class="voice-mic-btn" id="voiceMicBtn" type="button" aria-label="اضغط للتحدث">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+            <line x1="12" y1="19" x2="12" y2="23"/>
+            <line x1="8" y1="23" x2="16" y2="23"/>
+          </svg>
+        </button>
+        <div class="voice-status" id="voiceStatus">اضغط للتكلم</div>
+      </div>
+    </div>
+  </div>
+ 
+ 
+  <script src="script.js"></script>
+</body>
+</html>
